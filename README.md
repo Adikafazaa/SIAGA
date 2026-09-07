@@ -140,6 +140,29 @@ SIAGA dirancang dengan prinsip **Defense-in-Depth** untuk mendeteksi serangan da
 
 ## 🚀 Panduan Instalasi & Menjalankan
 
+### ⚡ Cara Termudah: 1-Click Unified Runner (Frontend + Backend Sekaligus)
+
+Untuk kenyamanan pengembangan dan demonstrasi cepat, Anda dapat menjalankan **Frontend dan Backend secara simultan dalam 1 terminal** langsung dari root direktori proyek:
+
+```bash
+# Opsi 1 (Windows Batch - Cukup double click run.bat atau ketik):
+run.bat
+
+# Opsi 2 (Python Universal):
+python run.py
+
+# Opsi 3 (NPM):
+npm run dev
+```
+
+> 💡 **Fitur Unified Runner:**
+> - Otomatis mendeteksi interpreter Python virtual environment (`.venv`).
+> - Menjalankan FastAPI (`:8000`) dan Next.js (`:3000`) secara paralel dengan live log ber-prefix warna (`[BACKEND]` cyan & `[FRONTEND]` hijau).
+> - Otomatis mendeteksi kesiapan server dan meluncurkan browser ke `http://localhost:3000`.
+> - Penanganan `Ctrl+C` yang anggun (*graceful tree shutdown*) sehingga tidak meninggalkan proses orphan yang memblokir port.
+
+---
+
 ### 📋 Prasyarat
 - **Node.js:** v18.18+ atau v20+
 - **Python:** v3.11+
@@ -147,7 +170,9 @@ SIAGA dirancang dengan prinsip **Defense-in-Depth** untuk mendeteksi serangan da
 
 ---
 
-### 1️⃣ Menjalankan Backend (FastAPI)
+### 🛠️ Menjalankan Secara Manual (Opsional)
+
+#### 1️⃣ Menjalankan Backend (FastAPI)
 
 ```bash
 # 1. Masuk ke direktori backend

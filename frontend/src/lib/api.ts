@@ -172,7 +172,7 @@ export async function chatMessageStream(
 ): Promise<ChatResponse> {
   if (currentMode() === "mock") return mock.chatStream(req, onToken);
   try {
-    const res = await fetch(`${API_URL}/v1/chat/message`, {
+    const res = await fetch(`${API_URL}/v1/chat/stream`, {
       method: "POST",
       headers: headers({ "Content-Type": "application/json" }),
       body: JSON.stringify({ ...req, stream: true }),

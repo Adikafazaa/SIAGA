@@ -1,0 +1,12 @@
+{
+  "name": "siaga-v2-root",
+  "version": "2.0.0",
+  "private": true,
+  "description": "PsychoBot & SIAGA v2 Fullstack Workspace",
+  "scripts": {
+    "dev": "python run.py",
+    "start": "python run.py",
+    "fe": "npm run dev --prefix frontend",
+    "be": "python run.py --backend-only"
+  }
+}
