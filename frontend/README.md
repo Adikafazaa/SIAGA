@@ -8,8 +8,7 @@ Sumber kebenaran desain: [`Modules/DESIGN.md`](../Modules/DESIGN.md) (konsol SOC
 
 ```bash
 npm install
-cp .env.example .env.local   # opsional — default sudah bisa jalan (mock mode)
-npm run dev                  # http://localhost:3000
+npm run dev                  # http://localhost:3000 (otomatis terhubung ke backend port 8000)
 ```
 
 ### Akun demo (Demo Mode — otomatis aktif saat Firebase belum dikonfigurasi)
