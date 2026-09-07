@@ -4,6 +4,11 @@
 > **Platform:** PsychoBot Clinical Care & Stateful Intent-Aware Guardrail Architecture (SIAGA)  
 > **Versi:** `v2.0.0` (Official Release) · HackNusa 2026
 
+> [!TIP]
+> **📖 Dokumen Monolitik / All-in-One:**  
+> Seluruh bab pengetahuan di bawah ini juga telah digabungkan menjadi 1 file lengkap terpadu yang siap dibaca atau diekspor:  
+> 👉 [**SIAGA_COMPLETE_KNOWLEDGE_BASE.md**](SIAGA_COMPLETE_KNOWLEDGE_BASE.md) *(~1.060+ baris dokumen sistem lengkap)*
+
 ---
 
 ## 🧭 Daftar Isi & Modul Pengetahuan
