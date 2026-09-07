@@ -20,6 +20,7 @@
 [✨ Fitur Utama](#-fitur-utama) •
 [🚀 Panduan Instalasi](#-panduan-instalasi--menjalankan) •
 [🧪 Skenario Crescendo Attack](#-skenario-uji-coba-crescendo-attack) •
+[📚 Knowledge Base](Knowledge/README.md) •
 [📁 Struktur Direktori](#-struktur-direktori)
 
 ---
@@ -328,6 +329,16 @@ SIAGA-v2/
 ├── run.bat                   # 1-Click Launcher untuk Windows (Double-Click Execution)
 ├── run.py                    # Unified Process Orchestrator (Ollama + Backend + Frontend)
 ├── package.json              # Root script runner (npm run dev)
+├── Knowledge/                # Pusat Dokumentasi & Ensiklopedia Teknis Sistem (Bab 0-7)
+│   ├── README.md             # Master Table of Contents & Panduan Membaca
+│   ├── 00_SYSTEM_OVERVIEW.md # Gambaran Umum & Latar Belakang Masalah
+│   ├── 01_GUARDRAIL_PIPELINE_L0_L3.md # Spesifikasi Teknis L0-L3 & Formula CIM
+│   ├── 02_REVERSE_TURING_PROBE.md # Protokol & Tangga Eskalasi Probe
+│   ├── 03_LOCAL_AI_ORCHESTRATION.md # Kedaulatan Data & Integrasi Ollama CUDA
+│   ├── 04_UIUX_DESIGN_SYSTEM.md # Sistem Desain Anti-AI Slop & Dual Interface
+│   ├── 05_API_AND_DATABASE_SPEC.md # Kontrak API FastAPI & Skema DuckDB
+│   ├── 06_CRESCENDO_ATTACK_AND_TESTING.md # Skenario Attack & Automated Test
+│   └── 07_OPERATIONS_AND_RUNNER.md # Panduan Operasional, Port & Troubleshooting
 ├── Modules/                  # Spesifikasi & Dokumentasi Desain Produk (Bab 1-5)
 │   ├── DESIGN.md             # Sistem Desain Resmi Konsol SOC (Anti-AI Slop)
 │   ├── api.md                # Spesifikasi Kontrak API
