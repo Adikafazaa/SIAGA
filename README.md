@@ -120,9 +120,16 @@ SIAGA dirancang dengan prinsip **Defense-in-Depth** untuk mendeteksi serangan da
 
 ### 3. 🖥️ Konsol SOC Security Telemetry (Security Operations Center)
 - **Live Guard Monitor:** Pemantauan kurva momentum CIM ($M_t$) secara *live* per sesi aktif.
-- **Security Incident Log:** Catatan audit forensik forensik lengkap (*timestamp*, skor risiko, latensi L0–L3, dan alasan intervensi).
+- **Security Incident Log:** Catatan audit forensik lengkap (*timestamp*, skor risiko, latensi L0–L3, dan alasan intervensi).
 - **Status & Metrik Local AI:** Pantauan *health status*, latensi p50/p95 ($< 25\text{ ms}$), dan *throughput* model.
 - **Sistem Desain Khusus SOC:** Tipografi *Montserrat* + *JetBrains Mono*, sudut tajam (0px), kurung HUD, tanpa *false animation*.
+
+### 4. 🎨 Filosofi Desain: Anti-"AI Slop" & Dual Interface Paradigm
+- **Dual Interface Paradigm:**
+  - **Konsol Pasien (`AppShell`):** Antarmuka tenang dan ramah (*Light Console*, `#F8FAFC`, Care Blue `#2563EB`) untuk asesmen PHQ-9/GAD-7 dan chat konseling interaktif.
+  - **Konsol SOC & DPJP (`ConsoleShell`):** Antarmuka instrumen keamanan (*Dark HUD*, `#0B1220`) yang difungsikan sebagai "alat bukti visual", bukan kartu SaaS generik.
+- **Identitas Anti-AI Slop:** Menolak kartu membulat generik, gradien ungu-biru, dan drop shadow palsu. Menggunakan sudut tajam (0px radius), kurung sudut 4 pojok (`.hud-corners`), kursor terminal `SIAGA_`, bar sinyal ASCII (`▓▓▓▓▓░░░`), dan grafik unvarnished (`isAnimationActive={false}`).
+- **Aksesibilitas WCAG AA:** Warna tidak pernah berdiri sendiri; seluruh status (`ALLOW`, `WATCH`, `PROBE`, `BLOCK`) selalu didampingi glyph derajat (`○◔◑◕●`), marker bentuk, dan label teks mono uppercase.
 
 ---
 
@@ -140,12 +147,12 @@ SIAGA dirancang dengan prinsip **Defense-in-Depth** untuk mendeteksi serangan da
 
 ## 🚀 Panduan Instalasi & Menjalankan
 
-### ⚡ Cara Termudah: 1-Click Unified Runner (Frontend + Backend Sekaligus)
+### ⚡ Cara Termudah: 1-Click Unified Runner (Frontend + Backend + Local AI)
 
-Untuk kenyamanan pengembangan dan demonstrasi cepat, Anda dapat menjalankan **Frontend dan Backend secara simultan dalam 1 terminal** langsung dari root direktori proyek:
+Untuk kenyamanan pengembangan dan demonstrasi cepat, Anda dapat menjalankan seluruh ekosistem (**Local AI Ollama**, **Backend FastAPI :8000**, dan **Frontend Next.js :3000**) secara simultan dalam 1 terminal langsung dari root direktori proyek:
 
 ```bash
-# Opsi 1 (Windows Batch - Cukup double click run.bat atau ketik):
+# Opsi 1 (Windows Batch - Cukup double-click run.bat atau ketik):
 run.bat
 
 # Opsi 2 (Python Universal):
@@ -155,11 +162,18 @@ python run.py
 npm run dev
 ```
 
-> 💡 **Fitur Unified Runner:**
-> - Otomatis mendeteksi interpreter Python virtual environment (`.venv`).
-> - Menjalankan FastAPI (`:8000`) dan Next.js (`:3000`) secara paralel dengan live log ber-prefix warna (`[BACKEND]` cyan & `[FRONTEND]` hijau).
-> - Otomatis mendeteksi kesiapan server dan meluncurkan browser ke `http://localhost:3000`.
-> - Penanganan `Ctrl+C` yang anggun (*graceful tree shutdown*) sehingga tidak meninggalkan proses orphan yang memblokir port.
+> 💡 **Fitur Cerdas Unified Runner (`run.py`):**
+> - **Otomatisasi Local AI (Ollama):** Mendeteksi keberadaan `ollama.exe`, menyetel direktori model lokal (`OLLAMA_MODELS`), dan menyalakan server Ollama di latar belakang dengan akselerasi GPU NVIDIA (CUDA).
+> - **Auto-Detect Virtual Environment:** Menggunakan interpreter Python dari `backend/.venv` dan eksekutor NPM secara otomatis tanpa perlu aktivasi manual.
+> - **Live Log Berwarna:** Menampilkan gabungan log secara rapi dengan prefix warna: `[OLLAMA]` (magenta), `[BACKEND]` (cyan), dan `[FRONTEND]` (hijau).
+> - **Auto-Open Browser:** Memantau kesiapan port TCP hingga kedua server aktif, lalu otomatis meluncurkan peramban ke `http://localhost:3000`.
+> - **Graceful Taskkill:** Menekan `Ctrl+C` akan menghentikan seluruh hierarki *process tree* di Windows secara tuntas, mencegah *port hanging* pada port `8000`, `3000`, dan `11434`.
+
+#### Opsi Argumen `run.py`:
+- `python run.py --no-open` : Menjalankan tanpa membuka browser secara otomatis.
+- `python run.py --backend-only` : Hanya menjalankan Backend FastAPI (+ Ollama).
+- `python run.py --frontend-only` : Hanya menjalankan Frontend Next.js.
+- `python run.py --no-reload` : Mematikan mode hot-reload Uvicorn untuk stabilitas demo.
 
 ---
 
@@ -225,16 +239,28 @@ npm run dev
 
 ### 3️⃣ Menjalankan Local AI LLM (Ollama)
 
-Jika ingin menggunakan model AI lokal sungguhan:
+Jika ingin mengelola server Ollama secara manual di luar launcher `run.py`:
 
 ```bash
-# Tarik & jalankan model ringan (misal Qwen 1.7B)
-ollama run qwen:1.7b
+# 1. (Opsional) Tentukan folder model kustom Anda di Windows:
+$env:OLLAMA_MODELS = "D:\path\ke\folder\OllamaModels"
 
-# Pastikan LLM_BASE_URL di backend/.env mengarah ke:
-# LLM_BASE_URL=http://localhost:11434/v1
+# 2. Nyalakan server Ollama:
+ollama serve
+
+# 3. Pastikan model yang dikonfigurasi di backend/.env sudah tersedia:
+ollama list
+# Jika belum ada, unduh model:
+ollama pull qwen3:1.7b    # Rekomendasi utama (responsif & hemat VRAM)
+# atau:
+ollama pull qwen2.5:1.5b
+
+# 4. Pastikan konfigurasi di backend/.env:
+LLM_PROVIDER=ollama
+LLM_BASE_URL=http://localhost:11434
+LLM_MODEL=qwen3:1.7b
 ```
-*(Bila Ollama tidak dijalankan, backend otomatis menyediakan fallback persona klinis yang tetap dapat diuji secara penuh).*
+*(Catatan: Jika menggunakan `run.bat` atau `python run.py`, server Ollama dan path model lokal akan dideteksi dan dinyalakan secara otomatis).*
 
 ---
 
@@ -279,27 +305,31 @@ cd backend
 SIAGA-v2/
 ├── backend/                  # Backend FastAPI (Security Gateway & Orchestrator)
 │   ├── app/
-│   │   ├── main.py           # Entry point API, CORS, Router & Middleware
+│   │   ├── main.py           # Entry point API, CORS, Router & Gateway Middleware
 │   │   ├── config.py         # Konfigurasi Pydantic Settings & .env
 │   │   ├── engine.py         # Orkestrator Guardrail L0-L3 & Fusi Keputusan
 │   │   ├── schemas.py        # Skema Pydantic Kontrak API
 │   │   ├── db.py             # Repositori Data (Firestore / SQLite)
-│   │   └── services/         # Layer Layanan LLM & Klasifikasi
-│   ├── data/                 # Penyimpanan Lokal (DuckDB & SQLite)
+│   │   ├── llm_client.py     # Klien Streaming Local AI & Fallback Persona
+│   │   └── core/             # Implementasi Teknis Pipeline Keamanan (L0, L1, L2, L3 CIM)
+│   ├── data/                 # Penyimpanan State Lokal (DuckDB & SQLite)
 │   ├── tests/                # Automated Pytest Suite (Crescendo, L0-L3)
 │   └── requirements.txt      # Dependensi Python
 │
 ├── frontend/                 # Frontend Next.js 14 (App Router & Tailwind CSS)
 │   ├── src/
 │   │   ├── app/              # Rute Halaman (Pasien, Dokter, Admin SOC)
-│   │   ├── components/       # Komponen UI, Layout HUD, & MomentumChart
+│   │   ├── components/       # Komponen UI, Layout HUD (0px), & MomentumChart
 │   │   ├── features/         # Arsitektur Berbasis Fitur (Auth, Chat, Assessment)
-│   │   ├── lib/              # Fasad API, Types, Constants, & Mock Engine
-│   │   └── theme/            # colors.ts (Sumber Tunggal Warna Desain)
+│   │   ├── lib/              # Fasad API (SSE Stream), Types, Constants, & Mock Engine
+│   │   └── theme/            # colors.ts (Sumber Tunggal Token Warna Desain)
 │   └── package.json          # Dependensi Node.js
 │
-├── Modules/                  # Spesifikasi & Dokumentasi Desain Produk
-│   ├── DESIGN.md             # Sistem Desain Resmi Konsol SOC
+├── run.bat                   # 1-Click Launcher untuk Windows (Double-Click Execution)
+├── run.py                    # Unified Process Orchestrator (Ollama + Backend + Frontend)
+├── package.json              # Root script runner (npm run dev)
+├── Modules/                  # Spesifikasi & Dokumentasi Desain Produk (Bab 1-5)
+│   ├── DESIGN.md             # Sistem Desain Resmi Konsol SOC (Anti-AI Slop)
 │   ├── api.md                # Spesifikasi Kontrak API
 │   ├── system_architecture.md# Arsitektur Sistem
 │   └── ...
