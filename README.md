@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ PsychoBot & SIAGA v2
+# 🛡️ PsychoBot & SIAGA
 ### *Sovereign Clinical Care & Stateful Intent-Aware Guardrail Architecture*
 
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js%2014%20(App%20Router)-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
