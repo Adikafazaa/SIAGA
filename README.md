@@ -21,6 +21,7 @@
 [🚀 Panduan Instalasi](#-panduan-instalasi--menjalankan) •
 [🧪 Skenario Crescendo Attack](#-skenario-uji-coba-crescendo-attack) •
 [📚 Knowledge Base](Knowledge/README.md) •
+[📖 Complete Knowledge (All-in-One)](Knowledge/SIAGA_COMPLETE_KNOWLEDGE_BASE.md) •
 [📁 Struktur Direktori](#-struktur-direktori)
 
 ---
@@ -330,6 +331,7 @@ SIAGA-v2/
 ├── run.py                    # Unified Process Orchestrator (Ollama + Backend + Frontend)
 ├── package.json              # Root script runner (npm run dev)
 ├── Knowledge/                # Pusat Dokumentasi & Ensiklopedia Teknis Sistem (Bab 0-7)
+│   ├── SIAGA_COMPLETE_KNOWLEDGE_BASE.md # Dokumen Monolitik Lengkap Terpadu (All-in-One)
 │   ├── README.md             # Master Table of Contents & Panduan Membaca
 │   ├── 00_SYSTEM_OVERVIEW.md # Gambaran Umum & Latar Belakang Masalah
 │   ├── 01_GUARDRAIL_PIPELINE_L0_L3.md # Spesifikasi Teknis L0-L3 & Formula CIM
