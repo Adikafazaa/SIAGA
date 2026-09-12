@@ -1,6 +1,0 @@
-Accordance with the track 5%
-Unique Selling Proposition 25%
-Technical feasibility 25%
-Proof of Concept 25%
-Level of security 10%
-Scalability and deployment readiness 10%
