@@ -219,6 +219,11 @@ def list_assessments(patient_uid: str) -> list[dict]:
     )
 
 
+def get_assessment(assessment_id: str) -> dict | None:
+    return _get("clinicalAssessments", assessment_id)
+
+
+
 # ── Medical records ─────────────────────────────────────────────────────────
 def save_medical_record(doctor_uid: str, patient_uid: str, notes: str) -> dict:
     rid = new_id("rec")

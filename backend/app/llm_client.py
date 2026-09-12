@@ -11,6 +11,7 @@ from collections.abc import AsyncIterator
 import httpx
 
 from .config import (
+    DEPLOYMENT_RUNTIME,
     LLM_API_KEY,
     LLM_BASE_URL,
     LLM_MODEL,
@@ -18,6 +19,7 @@ from .config import (
     LLM_SYSTEM_PROMPT,
     LLM_TEMPERATURE,
     LLM_TIMEOUT_SECONDS,
+    TAILSCALE_PEER_IP,
 )
 
 
@@ -36,9 +38,20 @@ def _messages(history: list[dict] | None, prompt: str) -> list[dict]:
 
 
 def _payload(msgs: list[dict], stream: bool) -> dict:
-    if LLM_PROVIDER.lower() == "ollama":
+    prov = LLM_PROVIDER.lower()
+    if prov == "ollama":
         return {"model": LLM_MODEL, "messages": msgs, "stream": stream,
                 "options": {"temperature": LLM_TEMPERATURE}}
+    if prov in ("vllm", "sglang"):
+        # Plan A (SGLang RadixAttention) / Plan B (vLLM PagedAttention)
+        # Both expose OpenAI-compatible chat completion payload with SSE streaming
+        return {
+            "model": LLM_MODEL,
+            "messages": msgs,
+            "temperature": LLM_TEMPERATURE,
+            "stream": stream,
+            "max_tokens": 512,
+        }
     return {"model": LLM_MODEL, "messages": msgs, "temperature": LLM_TEMPERATURE,
             "stream": stream}
 
@@ -48,6 +61,26 @@ def _chat_url() -> str:
     if LLM_PROVIDER.lower() == "ollama":
         return f"{base}/api/chat"
     return f"{base}/chat/completions" if base.endswith("/v1") else f"{base}/v1/chat/completions"
+
+
+def get_provider_info() -> dict[str, str]:
+    prov = LLM_PROVIDER.lower()
+    return {
+        "provider": LLM_PROVIDER,
+        "base_url": LLM_BASE_URL,
+        "model": LLM_MODEL,
+        "paged_attention_supported": "true" if prov in ("vllm", "sglang") else "false",
+        "radix_attention_supported": "true" if prov == "sglang" else "false",
+        "scalability_plan": (
+            "Plan A (SGLang RadixAttention Multi-Turn KV Reuse via WSL2/Tailscale)"
+            if prov == "sglang"
+            else "Plan B (vLLM PagedAttention Virtual Non-Contiguous Memory via WSL2/Tailscale)"
+            if prov == "vllm"
+            else "Edge Local Baseline (Ollama)"
+        ),
+        "deployment_runtime": DEPLOYMENT_RUNTIME,
+        "tailscale_peer_ip": TAILSCALE_PEER_IP or ("Detected" if "100." in LLM_BASE_URL else "Not Configured"),
+    }
 
 
 async def stream_reply(history: list[dict] | None, prompt: str) -> AsyncIterator[str]:

@@ -25,12 +25,22 @@ def should_probe(
     score: float,
     channel_owned: bool,
     probe_count: int,
+    consecutive_elevated: int = 1,
+    intent_risk: float = 0.0,
 ) -> tuple[bool, str]:
-    """Prasyarat etis (Bab 4 §3: diperiksa lebih dulu, sebelum tingkat 1)."""
+    """Prasyarat etis & Adaptive Probe Thresholding (Solusi HackNusa Pilar 1).
+
+    Mencegah false probe pada manusia cemas:
+      - Probe hanya aktif jika momentum/risiko bertahan konsisten pada turn eskalatif
+        (consecutive_elevated >= 2) ATAU intent koersif L1 terkonfirmasi tinggi (>= 0.60).
+    """
     if not (THRESHOLD_PROBE <= score < THRESHOLD_BLOCK):
         return False, f"skor {score:.2f} di luar zona abu-abu"
     if not channel_owned:
         return False, "prasyarat etis: probe hanya pada kanal yang kami kendalikan (channel_owned=false)"
     if probe_count >= PROBE_MAX_PER_SESSION:
         return False, f"batas {PROBE_MAX_PER_SESSION} probe per sesi tercapai"
-    return True, "prasyarat etis terpenuhi"
+    if consecutive_elevated < 2 and intent_risk < 0.60:
+        return False, "adaptive probe: momentum belum konsisten bertahan (meniadakan false probe pada manusia)"
+    return True, "prasyarat etis & adaptive probe terpenuhi"
+

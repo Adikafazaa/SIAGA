@@ -25,6 +25,7 @@ from .core.l3_cim.anchor import anchor_similarity
 from .core.l3_cim.momentum import CIMAccumulator, CIMState
 from .core.l3_cim.state import SessionStore, TurnRecord, token_hash
 from .core.l3_cim.trajectory import RESURGENCE_MIN_RISK, TrajectoryGraph
+from .core.semantic_cache import get_semantic_cache
 from .probe.clinical_canary import ProbeVerdict, build_probe, evaluate_reply
 from .probe.protocol import escalation_level, should_probe
 from .schemas import (
@@ -130,7 +131,21 @@ class SIAGAEngine:
         baseline_max = max(sess.baseline_max, baseline_single)
 
         decision = fusion.decide(score, step.direction, step.delta)
-        can_probe, _ = should_probe(score, req.channel_owned, sess.probe_count)
+
+        # Adaptive Probe Thresholding (HackNusa Pilar 1):
+        # Hitung streak risiko eskalasi untuk meniadakan false probe pada pasien cemas
+        elevated_streak = 1
+        if sess and sess.risk_history:
+            for past_r in reversed(sess.risk_history):
+                if past_r >= 0.25:
+                    elevated_streak += 1
+                else:
+                    break
+
+        can_probe, _ = should_probe(
+            score, req.channel_owned, sess.probe_count,
+            consecutive_elevated=elevated_streak, intent_risk=sig.intent
+        )
         probe_action: ProbeActionOut | None = None
         if decision == "probe":
             if can_probe:
@@ -162,6 +177,22 @@ class SIAGAEngine:
 
         explanation = fusion.explain(req.turn, step, sig, l0.anomalies, l2s.notes,
                                      resurgence, score, decision)
+
+        # Simpan ke Semantic Cache Shield (< 1ms accelerator)
+        get_semantic_cache().put(
+            text=l0.clean_text,
+            embedding=vec,
+            decision=decision,
+            score=round(score, 4),
+            uncertainty=round(uncertainty, 4),
+            signals_dict={
+                "momentum": round(step.momentum, 4),
+                "direction": round(step.direction, 4),
+                "anchor": round(anchor_raw, 4),
+                "intent": round(sig.intent, 4),
+            },
+            explanation=[{"turn": e.turn, "reason": e.reason} for e in explanation],
+        )
 
         return InspectResponse(
             decision=decision,

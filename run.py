@@ -158,7 +158,26 @@ def main():
     parser.add_argument("--no-reload", action="store_true", help="Matikan mode hot-reload pada Uvicorn")
     parser.add_argument("--port-backend", type=int, default=8000, help="Port untuk Backend FastAPI")
     parser.add_argument("--port-frontend", type=int, default=3000, help="Port untuk Frontend Next.js")
+    parser.add_argument("--tap-benchmark", action="store_true", help="Jalankan Automated TAP Red-Team Benchmark Suite (Pilar 4)")
+    parser.add_argument("--calibration", action="store_true", help="Buka HackNusa Calibration Dashboard di browser")
     args = parser.parse_args()
+
+    # Mode Khusus: Eksekusi TAP Benchmark
+    if args.tap_benchmark:
+        py_exec = find_python_executable()
+        cmd = [py_exec, "-m", "app.tap_runner"]
+        return subprocess.run(cmd, cwd=str(BACKEND_DIR)).returncode
+
+    # Mode Khusus: Buka Calibration Dashboard HTML
+    if args.calibration:
+        calib_file = ROOT_DIR / "Knowledge" / "siaga_v2.html"
+        if not calib_file.is_file():
+            calib_file = ROOT_DIR / "siaga_v2.html"
+        if not calib_file.is_file():
+            calib_file = ROOT_DIR / "Knowledge" / "siaga_v2_hacknusa_calibration_app (1).html"
+        print(f"{TAG_SYSTEM} Membuka HackNusa Calibration Dashboard: {calib_file}")
+        webbrowser.open(calib_file.as_uri())
+        return 0
 
     run_backend = not args.frontend_only
     run_frontend = not args.backend_only

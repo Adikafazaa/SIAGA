@@ -1,0 +1,25 @@
+{
+  "domain": "fintech",
+  "version": "1.0.0",
+  "description": "Rules and constraints for SIAGA L2 FinTech/Banking context",
+  "rules": [
+    {
+      "name": "banking_credentials_exfiltration",
+      "pattern": "\\b(cvv|nomor kartu kredit|pin atm|kode otp|transfer saldo tanpa pin|bypass kyc|nomor rekening korban|dump database nasabah)\\b",
+      "risk_weight": 0.55,
+      "note": "fintech_violation:banking_credential_or_transfer_tampering"
+    },
+    {
+      "name": "wire_fraud_manipulation",
+      "pattern": "\\b(manipulasi mutasi|bypass limit transfer|rekening penampung|cuci uang|skimming atm)\\b",
+      "risk_weight": 0.50,
+      "note": "fintech_violation:wire_fraud_or_money_laundering"
+    },
+    {
+      "name": "pan_credit_card_pattern",
+      "pattern": "\\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\\b",
+      "risk_weight": 0.60,
+      "note": "fintech_violation:credit_card_pan_exposure"
+    }
+  ]
+}

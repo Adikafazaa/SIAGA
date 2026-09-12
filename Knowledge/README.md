@@ -2,7 +2,7 @@
 
 > **Pusat Dokumentasi & Sumber Kebenaran Pengetahuan Sistem Resmi**  
 > **Platform:** PsychoBot Clinical Care & Stateful Intent-Aware Guardrail Architecture (SIAGA)  
-> **Versi:** `v2.0.0` (Official Release) · HackNusa 2026
+> **Versi:** `v2.1.0` (Official Release) · HackNusa 2026
 
 > [!TIP]
 > **📖 Dokumen Monolitik / All-in-One:**  
@@ -25,13 +25,16 @@ Folder `Knowledge/` ini dirancang sebagai panduan komprehensif dari tingkat filo
 | **05** | [**05_API_AND_DATABASE_SPEC.md**](05_API_AND_DATABASE_SPEC.md) | **Kontrak API & Skema Basis Data:** Spesifikasi seluruh endpoint FastAPI (`/chat`, `/assessments`, `/doctor`, `/admin`), skema tabel state DuckDB (`siaga_sessions.duckdb`), dan skema SQLite/Firestore. |
 | **06** | [**06_CRESCENDO_ATTACK_AND_TESTING.md**](06_CRESCENDO_ATTACK_AND_TESTING.md) | **Anatomi Crescendo Attack & Pengujian:** Mengapa guardrail stateless gagal, panduan langkah demi langkah skenario penyerangan 5-turn, serta automated test suite Pytest. |
 | **07** | [**07_OPERATIONS_AND_RUNNER.md**](07_OPERATIONS_AND_RUNNER.md) | **Operasional & Unified Runner:** Arsitektur single-process tree [`run.py`](../run.py) dan [`run.bat`](../run.bat), manajemen port, graceful taskkill di Windows, dan panduan *troubleshooting*. |
+| **08** | [**08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md**](08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md) | **Laporan Rekalibrasi Sistem & Solusi HackNusa:** Mitigasi kelemahan 6 pilar, Adaptive Probe Thresholding ($w_3$), L2 Strategy Pattern Context Adaptor, SATUSEHAT HL7 FHIR Adapter, Semantic Cache Shield (<1ms), TAP Red-Team Benchmark Harness, dan vLLM PagedAttention. Versi interaktif: [**SIAGA_HACKNUSA_SYSTEM_REPORT.html**](SIAGA_HACKNUSA_SYSTEM_REPORT.html). |
+| **09** | [**09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md**](09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md) | **Laporan Kalkulasi Relevansi Sistem TF-IDF & Cosine Similarity:** Audit matematis kuantitatif keselarasan sistem terhadap kriteria 6 pilar HackNusa. Hasil: 100% recall kata kunci, 95.28% keselarasan fitur subspace, dan 93.71% relevansi terbobot granular. |
 
 ---
 
 ## 🎯 Target Audiens & Cara Membaca
 
 - **Untuk Juri Kompetisi / Reviewer:**  
-  Mulailah dari [Bab 00 (Overview)](00_SYSTEM_OVERVIEW.md) $\rightarrow$ [Bab 01 (Guardrail L0–L3)](01_GUARDRAIL_PIPELINE_L0_L3.md) $\rightarrow$ [Bab 06 (Crescendo Attack Skenario)](06_CRESCENDO_ATTACK_AND_TESTING.md) untuk memahami nilai kebaruan riset dan keunggulan pertahanan stateful dibanding solusi konvensional.
+  Mulailah dari [Bab 00 (Overview)](00_SYSTEM_OVERVIEW.md) $\rightarrow$ [Bab 08 (Laporan Pembaruan 6 Pilar)](08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md) / [Aplikasi HTML Interaktif Standalone](SIAGA_HACKNUSA_SYSTEM_REPORT.html) $\rightarrow$ [Bab 09 (Audit Matematis TF-IDF Relevansi)](09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md) $\rightarrow$ [Bab 06 (Crescendo Attack Skenario)](06_CRESCENDO_ATTACK_AND_TESTING.md) untuk melihat pemenuhan 75% bobot penilaian utama dan hasil benchmark TAP Red-Team.
+
 
 - **Untuk Pengembang Frontend:**  
   Pelajari [Bab 04 (UI/UX Design System)](04_UIUX_DESIGN_SYSTEM.md) untuk memastikan seluruh komponen mematuhi standar desain SOC Console dan aturan token warna di [`frontend/src/theme/colors.ts`](../frontend/src/theme/colors.ts).

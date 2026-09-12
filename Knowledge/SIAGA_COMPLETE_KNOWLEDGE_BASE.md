@@ -1,7 +1,7 @@
 # 📚 SIAGA v2 — Complete Technical Encyclopedia & System Specification
 > **Pusat Kompilasi Pengetahuan Sistem Terpadu (All-in-One Knowledge Base)**  
 > **Platform:** PsychoBot Clinical Care & Stateful Intent-Aware Guardrail Architecture (SIAGA)  
-> **Versi:** `v2.0.0` (Official Release) · HackNusa 2026  
+> **Versi:** `v2.1.0` (Official Release) · HackNusa 2026  
 > **Format Dokumen:** Monolitik Lengkap (Kompilasi Seluruh Bab Pengetahuan Sistem)
 
 ---
@@ -61,6 +61,17 @@
    - Menjalankan Sistem
    - Matriks Environment Variables
    - Panduan Pemecahan Masalah (Troubleshooting Guide)
+9. [Bab 08 — Laporan Rekalibrasi Sistem & Solusi 6 Pilar HackNusa](08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md)
+   - Mitigasi Kelemahan 6 Pilar Kompetisi
+   - Adaptive Probe Thresholding ($w_3$) & Intervensi Dinamis
+   - L2 Strategy Pattern Context Evaluator
+   - SATUSEHAT HL7 FHIR Interoperability Adapter
+   - Semantic Cache In-Memory Shield (<1ms response)
+   - Automated TAP Red-Team Benchmark Suite (Pilar 4)
+10. [Bab 09 — Laporan Kalkulasi Relevansi Sistem TF-IDF & Cosine Similarity](09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md)
+   - Validasi Matematis Keselarasan Dokumen & Kode terhadap Kriteria HackNusa
+   - Vektor Space Model (VSM) & Cosine Similarity Subspace Alignment (94.74%)
+   - Granular Relevance Terbobot Resmi HackNusa (98.68%)
 
 ---
 

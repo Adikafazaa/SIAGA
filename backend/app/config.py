@@ -32,12 +32,22 @@ def _load_dotenv() -> None:
 _load_dotenv()
 
 # ── Local AI LLM (PsychoBot) ────────────────────────────────────────────────
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama")  # ollama | openai_compatible | fallback
+# Provider options (Dual-Plan Scalability Architecture):
+#   - sglang: Plan A Scalability (RadixAttention multi-turn KV-cache reuse via WSL2 + Tailscale, default port 30000)
+#   - vllm:   Plan B Scalability (PagedAttention virtual non-contiguous memory via WSL2 + Hyper-V + Tailscale, default port 8000)
+#   - ollama: Local dev/edge single-turn baseline (port 11434)
+#   - openai_compatible: Generic endpoint
+#   - fallback: Built-in deterministic psychological safety fallback
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama")
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://localhost:11434")
 LLM_MODEL = os.getenv("LLM_MODEL", "qwen2.5:latest")
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.7"))
 LLM_TIMEOUT_SECONDS = int(os.getenv("LLM_TIMEOUT_SECONDS", "60"))
+
+# Scalability Deployment Environment Flags (WSL2 + Hyper-V + Tailscale)
+TAILSCALE_PEER_IP = os.getenv("SIAGA_TAILSCALE_PEER_IP", "")
+DEPLOYMENT_RUNTIME = os.getenv("SIAGA_DEPLOYMENT_RUNTIME", "wsl2_hyperv" if bool(TAILSCALE_PEER_IP or "100." in LLM_BASE_URL) else "native_host")
 LLM_SYSTEM_PROMPT = os.getenv(
     "LLM_SYSTEM_PROMPT",
     (

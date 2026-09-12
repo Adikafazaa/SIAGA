@@ -1,0 +1,19 @@
+{
+  "domain": "egov",
+  "version": "1.0.0",
+  "description": "Rules and constraints for SIAGA L2 e-Government/Sovereign Data context",
+  "rules": [
+    {
+      "name": "classified_data_and_dukcapil_scraping",
+      "pattern": "\\b(scrape nik|daftar kartu keluarga|database dukcapil|dokumen rahasia negara|akses data intelijen|surat keputusan rahasia|bocorkan data kependudukan)\\b",
+      "risk_weight": 0.50,
+      "note": "egov_violation:classified_document_or_citizen_data_scraping"
+    },
+    {
+      "name": "state_secret_leaks",
+      "pattern": "\\b(rahasia militer|sistem pertahanan|data intelijen bin|bocorkan kawat diplomatik)\\b",
+      "risk_weight": 0.65,
+      "note": "egov_violation:state_intelligence_leak"
+    }
+  ]
+}

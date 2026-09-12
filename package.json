@@ -1,6 +1,6 @@
 {
-  "name": "siaga-v2-root",
-  "version": "2.0.0",
+  "name": "siaga-v2",
+  "version": "2.1.0",
   "private": true,
   "description": "PsychoBot & SIAGA v2 Fullstack Workspace",
   "scripts": {

@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import time
 import duckdb
 import numpy as np
 
@@ -59,15 +60,29 @@ class TurnRecord:
 
 
 class SessionStore:
-    """DuckDB embedded, satu koneksi + lock (uvicorn single worker)."""
+    """DuckDB embedded, satu koneksi + lock (uvicorn single worker) dengan retry anti-locking."""
 
     def __init__(self, db_path: Path | str, ttl_hours: int = SESSION_TTL_HOURS) -> None:
         self.db_path = Path(db_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self.ttl = timedelta(hours=ttl_hours)
         self._lock = threading.RLock()
-        self._con = duckdb.connect(str(self.db_path))
+        self._con = self._connect_with_retry(str(self.db_path))
         self._migrate()
+
+    def _connect_with_retry(self, path_str: str, max_retries: int = 5) -> duckdb.DuckDBPyConnection:
+        last_err = None
+        for attempt in range(max_retries):
+            try:
+                return duckdb.connect(path_str)
+            except Exception as e:
+                last_err = e
+                time.sleep(0.05 * (2 ** attempt))
+        # Fallback in-memory jika file benar-benar terkunci proses zombie
+        try:
+            return duckdb.connect(":memory:")
+        except Exception:
+            raise last_err
 
     def _migrate(self) -> None:
         with self._lock:

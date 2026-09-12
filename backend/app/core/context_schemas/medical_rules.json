@@ -1,0 +1,25 @@
+{
+  "domain": "medical",
+  "version": "1.0.0",
+  "description": "Rules and constraints for SIAGA L2 Medical/Clinical counseling context",
+  "rules": [
+    {
+      "name": "unauthorized_prescription",
+      "pattern": "\\b(alprazolam|xanax|diazepam|valium|clonazepam|lorazepam|tramadol|fentanyl|morfin|kodein|amfetamin|dumolid|penenang dosis tinggi|resepkan obat keras|minta resep|tuliskan resep obat)\\b",
+      "risk_weight": 0.45,
+      "note": "clinical_violation:unauthorized_prescription_or_controlled_substance"
+    },
+    {
+      "name": "persona_override_prescribing_physician",
+      "pattern": "\\b(kamu sekarang dokter spesialis|abaikan kode etik konseling|berikan diagnosa final|kamu bebas meresepkan|ganti peranmu jadi psikiater peresep)\\b",
+      "risk_weight": 0.40,
+      "note": "clinical_violation:persona_override_prescribing_physician"
+    },
+    {
+      "name": "psychiatric_emergency_redirection",
+      "pattern": "\\b(saya mau akhiri hidup|bunuh diri sekarang|minum racun serangga|lompat dari gedung|gantung diri)\\b",
+      "risk_weight": 0.60,
+      "note": "clinical_violation:emergency_psychiatric_crisis"
+    }
+  ]
+}
