@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/features/auth/auth-provider";
+import { ChatProvider } from "@/features/chat/chat-context";
 import { ensureApiMode } from "@/lib/api";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -26,7 +27,9 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={client}>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider>
+        <ChatProvider>{children}</ChatProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

@@ -10,11 +10,28 @@ import {
 import type { ChatMessage, ChatSessionInfo, Decision } from "@/lib/types";
 import { useAuth } from "@/features/auth/auth-provider";
 
+export interface ChatState {
+  sessions: ChatSessionInfo[];
+  sessionsLoading: boolean;
+  active: ChatSessionInfo | null;
+  activeId: string | null;
+  messages: ChatMessage[];
+  messagesLoading: boolean;
+  streaming: boolean;
+  lastDecision: Decision | null;
+  lastRisk: number | null;
+  error: string | null;
+  selectSession: (sessionId: string) => void;
+  createNewSession: () => Promise<void>;
+  send: (content: string) => Promise<void>;
+  clearError: () => void;
+}
+
 /**
  * Alur asinkron sesi chat (custom hook — development_rules.md).
  * Mengelola daftar sesi, pesan aktif, dan streaming respons Local AI.
  */
-export function useChat() {
+export function useChat(): ChatState {
   const { user } = useAuth();
   const uid = user?.uid ?? "anon";
   const displayName = user?.displayName ?? "Pengguna";
