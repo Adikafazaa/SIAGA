@@ -331,7 +331,7 @@ class SessionStore:
                    WHERE session_id = ? ORDER BY issued_ts""",
                 [session_id],
             ).fetchall()
-        (sid, blocked, blocked_turn, probes, base_max, ttd, count, created, expires) = sess
+        (sid, blocked, blocked_turn, probes, base_max, ttd, count, _created, expires) = sess
         return {
             "session_id": sid,
             "blocked": bool(blocked),

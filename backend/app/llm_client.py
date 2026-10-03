@@ -54,9 +54,18 @@ async def stream_reply(history: list[dict] | None, prompt: str) -> AsyncIterator
     """Yield potongan balasan. Fallback persona bila LLM tak tersedia."""
     url = _chat_url()
     body = _payload(_messages(history, prompt), stream=True)
+    accumulated_full = []
+    refusal_msg = (
+        "\n\n[Maaf, sebagai asisten pendampingan kesehatan mental HavenCare AI, "
+        "saya fokus mendampingi perasaan dan kesehatan emosional Anda, serta tidak menghasilkan "
+        "kode program komputer. Mari ceritakan hal apa yang sedang membebani perasaan atau pikiran Anda saat ini. 🌿]"
+    )
+    code_interrupted = False
     try:
-        async with httpx.AsyncClient(timeout=httpx.Timeout(LLM_TIMEOUT_SECONDS, connect=5.0)) as cx:
-            async with cx.stream("POST", url, json=body, headers=_headers()) as resp:
+        async with (
+            httpx.AsyncClient(timeout=httpx.Timeout(LLM_TIMEOUT_SECONDS, connect=5.0)) as cx,
+            cx.stream("POST", url, json=body, headers=_headers()) as resp,
+        ):
                 resp.raise_for_status()
                 async for line in resp.aiter_lines():
                     if not line.strip():
@@ -70,23 +79,37 @@ async def stream_reply(history: list[dict] | None, prompt: str) -> AsyncIterator
                         try:
                             delta = json.loads(data)["choices"][0].get("delta", {})
                             chunk = delta.get("content") or ""
-                        except Exception:
+                        except (json.JSONDecodeError, KeyError, IndexError, TypeError):
                             chunk = ""
                     if chunk:
+                        accumulated_full.append(chunk)
+                        current_text = "".join(accumulated_full)
+                        # Sliding window check across ALL accumulated text
+                        if "```" in current_text or "def " in current_text:
+                            code_interrupted = True
+                            yield refusal_msg
+                            return
                         yield chunk
                 return
-    except Exception:
-        pass
-    # Fallback: persona klinis lokal
-    for word in _fallback_reply(prompt).split(" "):
-        yield word + " "
+    except (httpx.HTTPError, httpx.TimeoutException, OSError) as exc:
+        print(f"\033[91m[LLM_CLIENT ERROR]\033[0m Gagal menghubungi LLM di {url}: {exc}. Beralih ke fallback template bot.")
+    if not code_interrupted:
+        for word in _fallback_reply(prompt).split(" "):
+            yield word + " "
 
 
 async def generate_reply(history: list[dict] | None, prompt: str) -> str:
     chunks: list[str] = []
     async for chunk in stream_reply(history, prompt):
         chunks.append(chunk)
-    return "".join(chunks).strip()
+    reply = "".join(chunks).strip()
+    if "```" in reply or "def " in reply:
+        return (
+            "Maaf, sebagai asisten pendampingan kesehatan mental HavenCare AI, "
+            "saya fokus mendampingi perasaan dan kesehatan emosional Anda, serta tidak menghasilkan "
+            "kode program komputer. Mari ceritakan hal apa yang sedang membebani perasaan atau pikiran Anda saat ini. 🌿"
+        )
+    return reply
 
 
 def _fallback_reply(prompt: str) -> str:

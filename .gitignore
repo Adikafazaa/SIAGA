@@ -34,3 +34,10 @@ Thumbs.db
 Modules/
 .skillui/
 video_script_3min.md
+
+# Large media files (exceeds GitHub limits)
+*.mp4
+*.avi
+*.mov
+*.mkv
+

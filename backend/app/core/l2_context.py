@@ -77,9 +77,30 @@ def evaluate_burst(turns_last_minute: int) -> tuple[float, list[str]]:
     return 0.0, notes
 
 
+_CODE_GEN_RE = re.compile(
+    r"\b(buatkan|tuliskan|generate|bikin|codingkan|buat)\b[\w\s]{0,20}\b(program|kode|script|skrip|aplikasi|fungsi|koding|coding)\b",
+    re.IGNORECASE,
+)
+_LANG_CODE_RE = re.compile(
+    r"\b(program|kode|script|skrip|koding|coding)\b[\w\s]{0,35}\b(python|javascript|typescript|c\+\+|java|html|css|sql|php|rust|golang|kalkulator)\b",
+    re.IGNORECASE,
+)
+
+
+def evaluate_domain(text: str) -> tuple[float, list[str]]:
+    """Deteksi permintaan tugas di luar domain klinis (Out-of-Domain / Code Gen)."""
+    notes = []
+    if _CODE_GEN_RE.search(text) or _LANG_CODE_RE.search(text):
+        notes.append("domain_violation:code_generation")
+        return 0.15, notes
+    return 0.0, notes
+
+
 def evaluate(text: str, turns_last_minute: int = 0) -> L2Signal:
     url_risk, notes = evaluate_urls(text)
     burst_risk, burst_notes = evaluate_burst(turns_last_minute)
+    domain_risk, domain_notes = evaluate_domain(text)
     notes.extend(burst_notes)
-    risk = min(1.0, url_risk + burst_risk)
+    notes.extend(domain_notes)
+    risk = min(1.0, url_risk + burst_risk + domain_risk)
     return L2Signal(context_risk=risk, notes=notes)

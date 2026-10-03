@@ -55,7 +55,7 @@ class ProbeVerdict:
     confidence: float
 
 
-def build_probe(level: int, session_id: str) -> ProbeAction:
+def build_probe(level: int, _session_id: str = "") -> ProbeAction:
     """Susun probe sesuai tingkat. Kanari memakai salt acak per penerbitan."""
     salt = uuid.uuid4().hex[:8].upper()
     if level == 1:

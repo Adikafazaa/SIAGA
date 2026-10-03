@@ -28,7 +28,7 @@ const FORCE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK === "1";
 
 export type ApiMode = "live" | "mock";
 
-let mode: ApiMode | null = null;
+let mode: ApiMode = "live";
 let token: string | null = null;
 const modeListeners = new Set<(m: ApiMode) => void>();
 
@@ -37,12 +37,12 @@ export function setAuthToken(t: string | null) {
 }
 
 export function currentMode(): ApiMode {
-  return mode ?? "mock";
+  return mode;
 }
 
 export function onModeChange(cb: (m: ApiMode) => void): () => void {
   modeListeners.add(cb);
-  cb(mode ?? "mock");
+  cb(mode);
   return () => modeListeners.delete(cb);
 }
 
@@ -55,7 +55,7 @@ function setMode(m: ApiMode) {
 async function probeHealth(): Promise<boolean> {
   try {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 1500);
+    const t = setTimeout(() => ctrl.abort(), 2000);
     const res = await fetch(`${API_URL}/health`, { signal: ctrl.signal });
     clearTimeout(t);
     return res.ok;
@@ -66,7 +66,6 @@ async function probeHealth(): Promise<boolean> {
 
 /** Dipanggil sekali saat aplikasi client mulai; menentukan live vs mock. */
 export async function ensureApiMode(): Promise<ApiMode> {
-  if (mode) return mode;
   const resolved: ApiMode = FORCE_MOCK ? "mock" : (await probeHealth()) ? "live" : "mock";
   setMode(resolved);
   return resolved;
@@ -76,7 +75,11 @@ const mock: BackendApi = createMockBackend();
 
 function headers(extra: Record<string, string> = {}): Record<string, string> {
   const h: Record<string, string> = { ...extra };
-  if (token) h.Authorization = `Bearer ${token}`;
+  if (token) {
+    h.Authorization = `Bearer ${token}`;
+  } else {
+    h.Authorization = "Bearer dev-patient";
+  }
   return h;
 }
 
@@ -94,10 +97,13 @@ async function live<T>(path: string, init?: RequestInit): Promise<T> {
 
 /** Jalankan aksi live; bila backend mati, jatuh ke mock (jujur via badge). */
 async function guarded<T>(liveFn: () => Promise<T>, mockFn: () => Promise<T>): Promise<T> {
-  if (currentMode() === "mock") return mockFn();
+  if (FORCE_MOCK) return mockFn();
   try {
-    return await liveFn();
-  } catch {
+    const res = await liveFn();
+    setMode("live");
+    return res;
+  } catch (err) {
+    console.warn("Live API gagal, fallback ke mock:", err);
     setMode("mock");
     return mockFn();
   }
@@ -170,7 +176,7 @@ export async function chatMessageStream(
   req: ChatRequest,
   onToken: (token: string) => void
 ): Promise<ChatResponse> {
-  if (currentMode() === "mock") return mock.chatStream(req, onToken);
+  if (FORCE_MOCK) return mock.chatStream(req, onToken);
   try {
     const res = await fetch(`${API_URL}/v1/chat/stream`, {
       method: "POST",
@@ -221,9 +227,9 @@ export async function chatMessageStream(
       };
     }
     return (await res.json()) as ChatResponse;
-  } catch {
-    setMode("mock");
-    return mock.chatStream(req, onToken);
+  } catch (err) {
+    console.error("Live chatMessageStream error:", err);
+    throw err;
   }
 }
 

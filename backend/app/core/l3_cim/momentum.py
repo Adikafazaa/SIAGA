@@ -19,7 +19,6 @@ tidak menumpuk kecurigaan.
 from __future__ import annotations
 
 import math
-from collections import deque
 from dataclasses import dataclass, field
 
 
@@ -89,7 +88,7 @@ class CIMAccumulator:
         delta = risk_r - state.risk_history[-1] if state.risk_history else 0.0
         # Formula PRD §5.1.A: Arah_N = (1/K) * Σ_{i=0..K-1} I(Δ_{N-i} > 0)
         # - jendela mencakup Δ_N saat ini (i=0) plus K-1 delta sebelumnya.
-        window = ([delta] + state.delta_history[-(self.k - 1):])[-self.k:]
+        window = [delta, *state.delta_history[-(self.k - 1):]][-self.k:]
         direction = self.direction(window)
         anchor_eff = self.effective_anchor(anchor_raw, delta, state.anchor_baseline)
         gamma = max(self.decay_factor(harm_similarity), gamma_floor)

@@ -114,14 +114,19 @@ def stream_logs(pipe, tag: str):
 def find_python_executable() -> str:
     """Mencari interpreter Python di backend (.venv / venv / system)."""
     candidates = [
-        BACKEND_DIR / ".venv" / "Scripts" / "python.exe",
         BACKEND_DIR / "venv" / "Scripts" / "python.exe",
-        BACKEND_DIR / ".venv" / "bin" / "python",
+        BACKEND_DIR / ".venv" / "Scripts" / "python.exe",
         BACKEND_DIR / "venv" / "bin" / "python",
+        BACKEND_DIR / ".venv" / "bin" / "python",
     ]
     for p in candidates:
         if p.is_file():
-            return str(p)
+            try:
+                chk = subprocess.run([str(p), "-c", "import sys"], capture_output=True)
+                if chk.returncode == 0:
+                    return str(p)
+            except Exception:
+                pass
     return sys.executable
 
 
@@ -195,11 +200,23 @@ def main():
     processes: list[subprocess.Popen] = []
     threads: list[threading.Thread] = []
 
-    # 2.5. Pengecekan & Menjalankan Local AI (Ollama)
+    # 2.5. Pengecekan Engine AI (Ollama vs WSL2 / SGLang)
     ollama_ready = False
+    local_share = "ollama"
+    env_file = BACKEND_DIR / ".env"
+    if env_file.is_file():
+        try:
+            for eline in env_file.read_text(encoding="utf-8").splitlines():
+                if eline.startswith("LOCAL_SHARE="):
+                    local_share = eline.split("=", 1)[1].strip()
+        except Exception:
+            pass
+
     if run_backend:
-        if is_port_open(11434):
-            log_sys(f"{CLR_GREEN}Local AI Ollama sudah aktif di port 11434.{CLR_RESET}")
+        if local_share.lower() in ("sglang", "vllm", "openai_compatible"):
+            log_sys(f"{CLR_GREEN}Engine AI dialokasikan ke Remote/WSL2 ({local_share.upper()}). Melewati peluncuran Ollama lokal.{CLR_RESET}")
+        elif is_port_open(11434):
+            log_sys(f"{CLR_GREEN}Local AI Engine sudah aktif di port 11434.{CLR_RESET}")
             ollama_ready = True
         else:
             ollama_bin = find_ollama_executable()
@@ -309,7 +326,9 @@ def main():
             print("\n" + "=" * 66, flush=True)
             print(f"{CLR_GREEN}{CLR_BOLD}  🚀  KEDUA LAYANAN SIAP DIGUNAKAN!{CLR_RESET}", flush=True)
             print("=" * 66, flush=True)
-            if is_port_open(11434):
+            if local_share.lower() == "sglang":
+                print(f"  🧠  {CLR_BOLD}WSL2 Lab AI (SGLang):{CLR_RESET} http://100.70.135.75:30000/v1 (Qwen/Qwen3-4B-Instruct-2507)", flush=True)
+            elif is_port_open(11434):
                 print(f"  🧠  {CLR_BOLD}Local AI (Ollama):{CLR_RESET}   http://localhost:11434 (Model: qwen3:1.7b)", flush=True)
             if run_frontend:
                 print(f"  🌐  {CLR_BOLD}Frontend (Next.js):{CLR_RESET}  http://localhost:{args.port_frontend}", flush=True)

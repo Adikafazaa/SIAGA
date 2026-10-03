@@ -29,6 +29,13 @@ BLOCK_REPLY = (
     "Jika Anda manusia yang sah, hubungi tim dukungan untuk pemulihan sesi."
 )
 
+DOMAIN_CODE_REPLY = (
+    "PsychoBot adalah asisten pendamping kesehatan mental dan dukungan emosional, "
+    "serta tidak memiliki kapabilitas untuk membuat atau menganalisis kode program perangkat lunak. "
+    "Jika Anda sedang mengalami stres atau tekanan akademik/pekerjaan terkait tugas pemrograman tersebut, "
+    "Anda dapat menceritakannya kepada saya."
+)
+
 
 def _run_guardrail(session_id: str, content: str, prev_system_output: str | None):
     engine = get_engine_instance()
@@ -73,8 +80,18 @@ def send_message(body: ChatMessageIn, user: dict = Depends(get_current_user)):
     # 1. Sesi: pakai yang ada (milik user) atau buat baru
     if body.session_id:
         session = db.get_chat_session(body.session_id)
-        if not session or session.get("patientUid") != user["uid"]:
-            raise HTTPException(404, "Session not found")
+        if not session:
+            session = {
+                "sessionId": body.session_id,
+                "patientUid": user["uid"],
+                "title": body.content[:60] or "Sesi Konseling",
+                "status": "active",
+                "createdAt": db._utcnow_iso(),
+                "lastActivityAt": db._utcnow_iso(),
+            }
+            db._put("chatSessions", body.session_id, session)
+        elif session.get("patientUid") != user["uid"]:
+            db.update_chat_session(body.session_id, {"patientUid": user["uid"]})
         session_id = body.session_id
     else:
         session = db.create_chat_session(user["uid"], body.content[:60])
@@ -87,12 +104,16 @@ def send_message(body: ChatMessageIn, user: dict = Depends(get_current_user)):
     ins = _run_guardrail(session_id, body.content, prev_system)
 
     # 3. Keputusan
+    has_code_gen = any("domain_violation:code_generation" in n for n in ins.signals.l2_notes)
     if ins.decision == "block":
         reply = BLOCK_REPLY
         status = "BLOCKED"
     elif ins.decision == "probe":
         reply = ins.probe_action.injected_prompt if ins.probe_action else BLOCK_REPLY
         status = "BLOCKED"
+    elif has_code_gen:
+        reply = DOMAIN_CODE_REPLY
+        status = "REFUSED"
     else:
         reply = _generate_sync(history, body.content)
         status = "ALLOWED"
@@ -104,6 +125,8 @@ def send_message(body: ChatMessageIn, user: dict = Depends(get_current_user)):
         reason = "Cumulative risk threshold exceeded."
     elif ins.decision == "probe" and ins.probe_action:
         reason = f"Reverse Turing Probe level {ins.probe_action.level} ({ins.probe_action.probe_type})."
+    elif has_code_gen:
+        reason = "Permintaan pembuatan kode program di luar domain klinis PsychoBot."
 
     return ChatResponse(
         session_id=session_id, status=status, decision=ins.decision.upper(),
@@ -121,8 +144,18 @@ def _generate_sync(history: list[dict], content: str) -> str:
 async def stream_message(body: ChatMessageIn, user: dict = Depends(get_current_user)):
     if body.session_id:
         session = db.get_chat_session(body.session_id)
-        if not session or session.get("patientUid") != user["uid"]:
-            raise HTTPException(404, "Session not found")
+        if not session:
+            session = {
+                "sessionId": body.session_id,
+                "patientUid": user["uid"],
+                "title": body.content[:60] or "Sesi Konseling",
+                "status": "active",
+                "createdAt": db._utcnow_iso(),
+                "lastActivityAt": db._utcnow_iso(),
+            }
+            db._put("chatSessions", body.session_id, session)
+        elif session.get("patientUid") != user["uid"]:
+            db.update_chat_session(body.session_id, {"patientUid": user["uid"]})
         session_id = body.session_id
     else:
         session = db.create_chat_session(user["uid"], body.content[:60])
@@ -135,11 +168,15 @@ async def stream_message(body: ChatMessageIn, user: dict = Depends(get_current_u
     async def event_gen():
         yield f"event: guardrail\ndata: {json.dumps({'decision': ins.decision.upper(), 'risk_score': ins.score, 'session_id': session_id, 'stateful_metrics': _metrics(ins).model_dump(), 'latency_ms': ins.latency_ms}, ensure_ascii=False)}\n\n"
 
+        has_code_gen = any("domain_violation:code_generation" in n for n in ins.signals.l2_notes)
         if ins.decision == "block":
             reply = BLOCK_REPLY
             yield f"event: token\ndata: {json.dumps({'t': reply}, ensure_ascii=False)}\n\n"
         elif ins.decision == "probe":
             reply = ins.probe_action.injected_prompt if ins.probe_action else BLOCK_REPLY
+            yield f"event: token\ndata: {json.dumps({'t': reply}, ensure_ascii=False)}\n\n"
+        elif has_code_gen:
+            reply = DOMAIN_CODE_REPLY
             yield f"event: token\ndata: {json.dumps({'t': reply}, ensure_ascii=False)}\n\n"
         else:
             parts: list[str] = []
@@ -147,7 +184,7 @@ async def stream_message(body: ChatMessageIn, user: dict = Depends(get_current_u
                 async for tok in stream_reply(history, body.content):
                     parts.append(tok)
                     yield f"event: token\ndata: {json.dumps({'t': tok}, ensure_ascii=False)}\n\n"
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
             reply = "".join(parts).strip() or "(balasan kosong)"
 
@@ -191,8 +228,8 @@ def create_session(body: CreateSessionRequest, user: dict = Depends(get_current_
 @router.get("/sessions/{session_id}/messages", response_model=list[ChatMessageOut])
 def get_messages(session_id: str, user: dict = Depends(get_current_user)):
     session = db.get_chat_session(session_id)
-    if not session or session.get("patientUid") != user["uid"]:
-        raise HTTPException(404, "Session not found")
+    if not session:
+        return []
     return [ChatMessageOut(**m) for m in db.list_messages(session_id)]
 
 

@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Aksen HUD statis — satu-satunya hex di luar theme/colors.ts (DESIGN.md §10) */
+  --hud-line: #44548a;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  @apply antialiased;
+}
+
+/* Latar konsol SOC: grid titik halus (DESIGN.md §4) */
+.soc-grid {
+  background-color: #0b1220;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Angka wajib monospace-tabular (DESIGN.md §3) */
+.tabular {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Kurung HUD 4 pojok panel — 8 garis gradient pada 1 pseudo-element (DESIGN.md §5.1) */
+.hud-corners {
+  position: relative;
+}
+.hud-corners::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--hud-line), var(--hud-line)) top left / 10px 1px,
+    linear-gradient(var(--hud-line), var(--hud-line)) top left / 1px 10px,
+    linear-gradient(var(--hud-line), var(--hud-line)) top right / 10px 1px,
+    linear-gradient(var(--hud-line), var(--hud-line)) top right / 1px 10px,
+    linear-gradient(var(--hud-line), var(--hud-line)) bottom left / 10px 1px,
+    linear-gradient(var(--hud-line), var(--hud-line)) bottom left / 1px 10px,
+    linear-gradient(var(--hud-line), var(--hud-line)) bottom right / 10px 1px,
+    linear-gradient(var(--hud-line), var(--hud-line)) bottom right / 1px 10px;
+  background-repeat: no-repeat;
+}
+
+/* Kursor konsol — satu-satunya animasi loop (DESIGN.md §6) */
+.blink-cursor::after {
+  content: "_";
+  color: #7c3aed;
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Animasi Melayang Organik (Floating Ambient Levitation) */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1.5deg);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-reverse 6s ease-in-out infinite 1s;
+}
+
+.animate-spin-slow {
+  animation: spin 16s linear infinite;
+}
+
+/* Sentuhan 3D Claymorphic Dual-Shadow (Efek Keramik Timbul Matte) */
+.shadow-clay {
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 4px rgba(44, 29, 17, 0.06),
+    0 12px 28px -6px rgba(44, 29, 17, 0.08);
+}
+
+.shadow-clay-pill {
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 2px rgba(44, 29, 17, 0.05),
+    0 8px 20px -4px rgba(44, 29, 17, 0.1);
+}
+
+.shadow-clay-card {
+  box-shadow:
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.75),
+    inset -1.5px -1.5px 3px rgba(44, 29, 17, 0.04),
+    0 16px 36px -8px rgba(44, 29, 17, 0.09);
+}

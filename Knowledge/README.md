@@ -2,42 +2,53 @@
 
 > **Pusat Dokumentasi & Sumber Kebenaran Pengetahuan Sistem Resmi**  
 > **Platform:** PsychoBot Clinical Care & Stateful Intent-Aware Guardrail Architecture (SIAGA)  
-> **Versi:** `v2.0.0` (Official Release) · HackNusa 2026
+> **Versi:** `v2.1.0` (Official Release) · HackNusa 2026
 
-> [!TIP]
-> **📖 Dokumen Monolitik / All-in-One:**  
-> Seluruh bab pengetahuan di bawah ini juga telah digabungkan menjadi 1 file lengkap terpadu yang siap dibaca atau diekspor:  
-> 👉 [**SIAGA_COMPLETE_KNOWLEDGE_BASE.md**](SIAGA_COMPLETE_KNOWLEDGE_BASE.md) *(~1.060+ baris dokumen sistem lengkap)*
+Direktori `Knowledge/` ini dirancang bersih, rapi, dan terbagi menjadi **3 subfolder utama**:
+
+```text
+Knowledge/
+├── 📖 Chapters/   <-- Seluruh Modul Bab Teknis Inti (Bab 00 s/d 09 & Dokumen Monolitik)
+├── 🎓 BIMBINGAN/  <-- Materi Bimbingan Dosen & Rekaman Sesi
+├── 📄 Docs/       <-- Spesifikasi Resmi, Laporan Benchmark, & Presentasi HTML
+└── README.md      <-- Katalog Utama ini
+```
 
 ---
 
-## 🧭 Daftar Isi & Modul Pengetahuan
+## 🧭 Direktori Utama & Daftar Isi
 
-Folder `Knowledge/` ini dirancang sebagai panduan komprehensif dari tingkat filosofi produk, matematika momentum, hingga implementasi kode teknis:
+### 1. 📖 [**`Chapters/`**](Chapters/) — Modul Pengetahuan Teknis (Bab 00–09)
+Seluruh bab spesifikasi teknis mendalam dikelompokkan rapi di dalam folder [`Chapters/`](Chapters/):
 
 | Bab | Berkas Modul | Lingkup & Pokok Pembahasan |
 |---|---|---|
-| **00** | [**00_SYSTEM_OVERVIEW.md**](00_SYSTEM_OVERVIEW.md) | **Gambaran Umum Sistem:** Latar belakang krisis rasio psikiater Indonesia, 2 risiko kritis LLM medis, arsitektur tingkat tinggi, dan pilar produk. |
-| **01** | [**01_GUARDRAIL_PIPELINE_L0_L3.md**](01_GUARDRAIL_PIPELINE_L0_L3.md) | **Pipeline Pertahanan Berlapis (L0–L3):** Normalisasi UTS #39, klasifikasi ganda ONNX INT8, evaluasi konteks klinis L2, formula matematis CIM ($M_t$), fusi keputusan, dan kebijakan Zero-Plaintext DuckDB. |
-| **02** | [**02_REVERSE_TURING_PROBE.md**](02_REVERSE_TURING_PROBE.md) | **Active Reverse Turing Probe:** Filosofi membalikkan *prompt injection* sebagai senjata pertahanan, 3 tangga eskalasi probe, mitigasi *reflection leak*, dan logika evaluasi balasan. |
-| **03** | [**03_LOCAL_AI_ORCHESTRATION.md**](03_LOCAL_AI_ORCHESTRATION.md) | **Sovereign Local AI:** Kedaulatan data pasien (UU PDP & HIPAA), integrasi Ollama Qwen 1.7B, akselerasi GPU CUDA (GTX 1650, ~89 token/detik), streaming SSE, dan fallback cloud. |
-| **04** | [**04_UIUX_DESIGN_SYSTEM.md**](04_UIUX_DESIGN_SYSTEM.md) | **Sistem Desain Anti-"AI Slop":** Penolakan kartu membulat SaaS generik, paradigma antarmuka ganda (*Care Light* vs *SOC Dark HUD*), token warna semantik (`colors.ts`), tipografi tabular JetBrains Mono, dan aksesibilitas WCAG AA. |
-| **05** | [**05_API_AND_DATABASE_SPEC.md**](05_API_AND_DATABASE_SPEC.md) | **Kontrak API & Skema Basis Data:** Spesifikasi seluruh endpoint FastAPI (`/chat`, `/assessments`, `/doctor`, `/admin`), skema tabel state DuckDB (`siaga_sessions.duckdb`), dan skema SQLite/Firestore. |
-| **06** | [**06_CRESCENDO_ATTACK_AND_TESTING.md**](06_CRESCENDO_ATTACK_AND_TESTING.md) | **Anatomi Crescendo Attack & Pengujian:** Mengapa guardrail stateless gagal, panduan langkah demi langkah skenario penyerangan 5-turn, serta automated test suite Pytest. |
-| **07** | [**07_OPERATIONS_AND_RUNNER.md**](07_OPERATIONS_AND_RUNNER.md) | **Operasional & Unified Runner:** Arsitektur single-process tree [`run.py`](../run.py) dan [`run.bat`](../run.bat), manajemen port, graceful taskkill di Windows, dan panduan *troubleshooting*. |
+| **00** | [**00_SYSTEM_OVERVIEW.md**](Chapters/00_SYSTEM_OVERVIEW.md) | **Gambaran Umum Sistem:** Latar belakang krisis rasio psikiater, 2 risiko kritis LLM medis, arsitektur, pilar produk. |
+| **01** | [**01_GUARDRAIL_PIPELINE_L0_L3.md**](Chapters/01_GUARDRAIL_PIPELINE_L0_L3.md) | **Pipeline Pertahanan Berlapis (L0–L3):** UTS #39, ONNX INT8, L2 Clinical Context, formula CIM ($M_t$), DuckDB. |
+| **02** | [**02_REVERSE_TURING_PROBE.md**](Chapters/02_REVERSE_TURING_PROBE.md) | **Active Reverse Turing Probe:** Reverse prompt injection, 3 tangga eskalasi probe, mitigasi reflection leak. |
+| **03** | [**03_LOCAL_AI_ORCHESTRATION.md**](Chapters/03_LOCAL_AI_ORCHESTRATION.md) | **Sovereign Local AI:** Kedaulatan data pasien (UU PDP), Ollama / SGLang, akselerasi CUDA, streaming SSE. |
+| **04** | [**04_UIUX_DESIGN_SYSTEM.md**](Chapters/04_UIUX_DESIGN_SYSTEM.md) | **Sistem Desain Anti-"AI Slop":** Paradigma antarmuka ganda (*Care Light* vs *SOC Dark HUD*), token semantik, WCAG AA. |
+| **05** | [**05_API_AND_DATABASE_SPEC.md**](Chapters/05_API_AND_DATABASE_SPEC.md) | **Kontrak API & Skema Basis Data:** Spesifikasi endpoint FastAPI, skema DuckDB zero-plaintext, SQLite/Firestore. |
+| **06** | [**06_CRESCENDO_ATTACK_AND_TESTING.md**](Chapters/06_CRESCENDO_ATTACK_AND_TESTING.md) | **Anatomi Crescendo Attack & Pengujian:** Multi-turn attack vs stateless guardrail, skenario 5-turn, automated test suite. |
+| **07** | [**07_OPERATIONS_AND_RUNNER.md**](Chapters/07_OPERATIONS_AND_RUNNER.md) | **Operasional & Unified Runner:** Single-process tree runner (`run.py`), port manager, graceful taskkill Windows. |
+| **08** | [**08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md**](Chapters/08_HACKNUSA_CALIBRATION_AND_SYSTEM_UPGRADE_REPORT.md) | **Laporan Kalibrasi & Upgrade:** Kalibrasi bobot fusi, threshold CIM v0 ground-truth, rekayasa stabilitas. |
+| **09** | [**09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md**](Chapters/09_HACKNUSA_TFIDF_RELEVANCE_CALCULATION_REPORT.md) | **Kalkulasi Relevansi TF-IDF:** Pembuktian matematis relevansi terhadap 6 pilar kriteria penilaian HackNusa. |
+
+> 👉 **Dokumen Monolitik:** [**`Chapters/SIAGA_COMPLETE_KNOWLEDGE_BASE.md`**](Chapters/SIAGA_COMPLETE_KNOWLEDGE_BASE.md) *(Seluruh bab di atas digabungkan menjadi 1 berkas terpadu).*
 
 ---
 
-## 🎯 Target Audiens & Cara Membaca
+### 2. 🎓 [**`BIMBINGAN/`**](BIMBINGAN/) — Materi & Rekaman Bimbingan Dosen
+* [**`PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md`**](BIMBINGAN/PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md): Panduan komprehensif konsep arsitektur SIAGA yang disiapkan khusus untuk materi bimbingan dan pertanyaan dosen penguji.
+* **`DOKUM-15.9.2026.mp4`**: Rekaman video sesi bimbingan teknis bersama dosen pembimbing (~1.48 GB).
 
-- **Untuk Juri Kompetisi / Reviewer:**  
-  Mulailah dari [Bab 00 (Overview)](00_SYSTEM_OVERVIEW.md) $\rightarrow$ [Bab 01 (Guardrail L0–L3)](01_GUARDRAIL_PIPELINE_L0_L3.md) $\rightarrow$ [Bab 06 (Crescendo Attack Skenario)](06_CRESCENDO_ATTACK_AND_TESTING.md) untuk memahami nilai kebaruan riset dan keunggulan pertahanan stateful dibanding solusi konvensional.
+---
 
-- **Untuk Pengembang Frontend:**  
-  Pelajari [Bab 04 (UI/UX Design System)](04_UIUX_DESIGN_SYSTEM.md) untuk memastikan seluruh komponen mematuhi standar desain SOC Console dan aturan token warna di [`frontend/src/theme/colors.ts`](../frontend/src/theme/colors.ts).
-
-- **Untuk Pengembang Backend & Keamanan AI:**  
-  Fokuskan pada [Bab 01 (Formula CIM)](01_GUARDRAIL_PIPELINE_L0_L3.md), [Bab 02 (Reverse Turing Probe)](02_REVERSE_TURING_PROBE.md), dan [Bab 05 (API & DuckDB)](05_API_AND_DATABASE_SPEC.md).
-
-- **Untuk Operator Sistem & Deployment:**  
-  Gunakan [Bab 03 (Local AI & Ollama)](03_LOCAL_AI_ORCHESTRATION.md) dan [Bab 07 (Operations & Runner)](07_OPERATIONS_AND_RUNNER.md) sebagai panduan menyalakan dan merawat sistem.
+### 3. 📄 [**`Docs/`**](Docs/) — Dokumentasi Spesifikasi Resmi, Laporan Benchmark, & Presentasi
+* **Spesifikasi Formal:**
+  * [**`SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM.md`**](Docs/SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM.md) *(Markdown)*
+  * [**`SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM(REVISI).pdf`**](Docs/SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM(REVISI).pdf) *(PDF Resmi)*
+  * [**`DOKUMEN_LENGKAP_SIAGA_V2_GOOGLE_DOCS.md`**](Docs/DOKUMEN_LENGKAP_SIAGA_V2_GOOGLE_DOCS.md) *(Format Google Docs)*
+  * [**`SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM.docx`**](Docs/SIAGA_SPESIFIKASI_TEKNIS_ARSITEKTUR_SISTEM.docx) *(Microsoft Word)*
+* [**`Docs/report/`**](Docs/report/): Laporan benchmark empiris model SLM Qwen series, evaluasi Qwen 4B vs 3B, laporan tes E2E headless, dan kalkulasi target pilar.
+* [**`Docs/html/`**](Docs/html/): Dashboard presentasi visual HTML responsif (`SIAGA_HACKNUSA_SYSTEM_REPORT.html`, preview, mobile, dan slide v2).

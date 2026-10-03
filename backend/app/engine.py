@@ -14,8 +14,8 @@ from .config import (
     CIM_W1,
     CIM_W2,
     CIM_W3,
-    DIRECTION_WINDOW_K,
     DB_PATH,
+    DIRECTION_WINDOW_K,
 )
 from .core import fusion
 from .core.l0_canonicalize import canonicalize
@@ -195,7 +195,7 @@ class SIAGAEngine:
                 session_id=session_id, outcome="no_pending_probe", decision="allow",
                 score=0.0, reason="Tidak ada probe tertunda pada sesi ini.",
             )
-        level, probe_type, canary_token = pending
+        _level, probe_type, canary_token = pending
         reply = canonicalize(reply_raw).clean_text
         verdict: ProbeVerdict = evaluate_reply(probe_type, canary_token, reply)
         sess = self.store.get_session(session_id)

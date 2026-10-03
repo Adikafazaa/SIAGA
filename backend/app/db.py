@@ -40,7 +40,7 @@ def _try_init_firestore():
         firebase_admin.initialize_app(cred)
         _firestore = firestore.client()
         return _firestore
-    except Exception:
+    except (ImportError, RuntimeError, ValueError):
         return None
 
 

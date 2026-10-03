@@ -1,0 +1,1696 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+/Title (Fitzpatrick et al\056 \055 Woebot RCT)
+/Subject (SIAGA bibliography source \13312\135)
+/Keywords (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 8
+/Kids [ 4 0 R 16 0 R 23 0 R 30 0 R 37 0 R 44 0 R 51 0 R 58 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 15 0 R ]
+>>
+endobj
+5 0 obj
+[ 13 0 R 14 0 R ]
+endobj
+6 0 obj
+<<
+/F1 7 0 R
+/F1-0 11 0 R
+/F1-1 18 0 R
+/F1-2 25 0 R
+/F1-3 32 0 R
+/F1-4 39 0 R
+/F1-5 46 0 R
+/F1-6 53 0 R
+/F1-7 60 0 R
+/F2 8 0 R
+/F2-0 12 0 R
+/F2-1 19 0 R
+/F2-2 26 0 R
+/F2-3 33 0 R
+/F2-4 40 0 R
+/F2-5 47 0 R
+/F2-6 54 0 R
+/F2-7 61 0 R
+/F3 9 0 R
+/F4 10 0 R
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /ZapfDingbats
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Symbol
+/Name /F4
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+11 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+12 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+13 0 obj
+<<
+/Length 5890
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 696.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 70 Tm /F2 18 Tf 22 TL .233528 0 Td (Delivering Cognitive Behavior Therapy to Young Adults) Tj T* 18.504 0 Td (With Symptoms of Depression and Anxiety Using a) Tj T* -0.468002 0 Td (Fully Automated Conversational Agent \(Woebot\): A) Tj T* 96.993 0 Td (Randomized Controlled Trial) Tj T* -115.2625 0 Td ET
+Q
+Q
+q
+1 0 0 1 59.85827 682.3622 cm
+Q
+q
+1 0 0 1 59.85827 663.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F1 9 Tf 13 TL (Fitzpatrick KK, Darcy A, Vierhile M | JMIR Mental Health, 2017;4\(2\):e19 | DOI: 10.2196/mental.7785) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 634.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 8 Tf 11 TL -0.084941 Tw (Teks artikel akses terbuka dari Europe PMC. Format tabel, gambar, dan lampiran tidak direproduksi; gunakan tautan sumber di header) Tj T* 0 Tw (untuk tata letak asli.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 604.3622 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (ABSTRAK) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 571.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Web-based cognitive-behavioral therapeutic \(CBT\) apps have demonstrated efficacy but are characterized by poor) Tj T* (adherence. Conversational agents may offer a convenient, engaging way of getting support at any time.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 525.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (The objective of the study was to determine the feasibility, acceptability, and preliminary efficacy of a fully automated) Tj T* (conversational agent to deliver a self-help program for college students who self-identify as having symptoms of anxiety) Tj T* (and depression.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 440.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (In an unblinded trial, 70 individuals age 18-28 years were recruited online from a university community social media site) Tj T* -0.031547 Tw (and were randomized to receive either 2 weeks \(up to 20 sessions\) of self-help content derived from CBT principles in a) Tj T* 0 Tw (conversational format with a text-based conversational agent \(Woebot\) \(n=34\) or were directed to the National Institute) Tj T* (of Mental Health ebook, \223Depression in College Students,\224 as an information-only control group \(n=36\). All participants) Tj T* (completed Web-based versions of the 9-item Patient Health Questionnaire \(PHQ-9\), the 7-item Generalized Anxiety) Tj T* (Disorder scale \(GAD-7\), and the Positive and Negative Affect Scale at baseline and 2-3 weeks later \(T2\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 316.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 108 Tm /F1 9 Tf 13 TL (Participants were on average 22.2 years old \(SD 2.33\), 67% female \(47/70\), mostly non-Hispanic \(93%, 54/58\), and) Tj T* (Caucasian \(79%, 46/58\). Participants in the Woebot group engaged with the conversational agent an average of 12.14) Tj T* (\(SD 2.23\) times over the study period. No significant differences existed between the groups at baseline, and 83%) Tj T* (\(58/70\) of participants provided data at T2 \(17% attrition\). Intent-to-treat univariate analysis of covariance revealed a) Tj T* (significant group difference on depression such that those in the Woebot group significantly reduced their symptoms of) Tj T* (depression over the study period as measured by the PHQ-9 \(F=6.47; P=.01\) while those in the information control) Tj T* -0.037052 Tw (group did not. In an analysis of completers, participants in both groups significantly reduced anxiety as measured by the) Tj T* 0 Tw (GAD-7 \(F1,54= 9.24; P=.004\). Participants\222 comments suggest that process factors were more influential on their) Tj T* (acceptability of the program than content factors mirroring traditional therapy.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 296.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F1 9 Tf 13 TL (Conversational agents appear to be a feasible, engaging, and effective way to deliver CBT.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 263.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Keywords: conversational agents, mobile mental health, mental health, chatbots, depression, anxiety, college students,) Tj T* (digital health) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 233.3622 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Introduction) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 122.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 95 Tm /F1 9 Tf 13 TL (Up to 74% of mental health diagnoses have their first onset before the age of 24 [1]. Depression and anxiety symptoms) Tj T* (are particularly common among college students, with more than half reporting symptoms of anxiety and depression in) Tj T* (the previous year that were so severe they had difficulty functioning [2]. In addition, epidemiological data suggest that) Tj T* (mental health problems are both increasing in prevalence and severity [3]. However, up to 75% of the college students) Tj T* (that need them do not access clinical services [3]. While the reasons for this are varied, the ubiquity of free or) Tj T* (inexpensive mental health services on campuses suggests that service availability and cost are not primary barriers to) Tj T* (care [3]. Like non-college populations, stigma is considered the primary barrier to accessing psychological health) Tj T* (services.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 63.3622 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (Overcoming problems of stigma has been traditionally considered a major benefit of Internet-delivered and more) Tj T* -0.069409 Tw (recently mobile mental health interventions. In recent years, there has been an explosion of interest and development of) Tj T* 0 Tw (such services to either supplement existing mental health treatments or expand limited access to quality mental health) Tj T* (services [4]. This development is matched by great patient demand with about 70% showing interest in using mobile) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+14 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-0 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-0 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+15 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 4 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+16 0 obj
+<<
+/Contents 17 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 22 0 R ]
+>>
+endobj
+17 0 obj
+[ 20 0 R 21 0 R ]
+endobj
+18 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+19 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+20 0 obj
+<<
+/Length 6742
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 706.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (apps to self-monitor and self-manage their mental health [5]. Internet interventions for anxiety and depression have) Tj T* (empirical support [6] with outcomes comparable to therapist-delivered cognitive behavioral therapy \(CBT\) [7,8]. Yet,) Tj T* (despite demonstrated efficacy, they are characterized by relatively poor adoption and adherence. One review found a) Tj T* (median minimal completion rate of 56% [9]. A hypothesized reason for this lack of adherence is the loss of the human) Tj T* (interactional quality that in-person CBT retains. For example, certain therapeutic process factors such as accountability) Tj T* (may be more salient in traditional face-to-face treatments, compared to digital health interventions.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 569.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 121 Tm /F1 9 Tf 13 TL (With recent advancements in voice recognition, conversational interfaces \(ie, those that use natural language as inputs) Tj T* (and outputs\) have begun to emerge. Conversational agents \(such as Apple\222s Siri or Amazon\222s Alexa\) may be a more) Tj T* (natural medium through which individuals engage with technology. Humans respond and converse with nonhuman) Tj T* (agents in ways that mirror emotional and social discourse dynamics when discussing behavioral health [10] and their) Tj T* (capacity to act as first responders has already been evaluated [11]. Theoretically, conversational interfaces may be) Tj T* (better positioned than visually oriented mobile apps to deliver structured, manualized therapies because in addition to) Tj T* -0.076863 Tw (delivering therapeutic content, they can mirror therapeutic process. Indeed, Bickmore et al demonstrated that a carefully) Tj T* 0 Tw (designed health-related conversational agent could establish a therapeutic relationship with adults attempting to) Tj T* -0.06835 Tw (increase exercise [10]. The intervention was an embodied conversational agent, that is, it was designed with a graphical) Tj T* 0 Tw (face to mirror human interactions that are typically face-to-face.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 445.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 108 Tm /F1 9 Tf 13 TL (However, most consumer-facing conversational agents are not embodied. The capacity of text-based agents to deliver) Tj T* (CBT is a question worth exploring given the ability of widely disseminated evidence-based digital apps to reduce the) Tj T* (burden of mental illnesses in the US college population, estimated to be approximately 20 million [12]. Unfortunately,) Tj T* (the few mobile apps that have been evaluated formally have seen substantial challenges to sustainability since they) Tj T* (tend to be built in academic research settings and rarely have the required infrastructure to support them. One) Tj T* (systematic review of 5464 abstracts identified just 5 apps that had supporting evidence from randomized controlled) Tj T* (trials, though, as of January 2014, none of them were available commercially [13]. Thus, in the interest of sustainability,) Tj T* (this study tested the ability of a commercially developed text-based conversational agent to deliver CBT to college) Tj T* (students.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 334.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 95 Tm /F1 9 Tf 13 TL (Given the variability in quality of available mental health apps, a conversational agent was created to integrate 15 out of) Tj T* (the 16 evidence-based recommendations for app development [4] as follows: built using a CBT framework; addressing) Tj T* (both anxiety and low mood; designed for use by nonclinical populations; incorporating automated tailoring; reporting of) Tj T* -0.053329 Tw (thoughts, feelings, or behaviors; recommending activities; provision of mental health information; real-time engagement;) Tj T* 0 Tw (activities explicitly linked to specific reported mood problems; encouraging non) Tj /F3 9 Tf 13 TL (n) Tj /F1 9 Tf 13 TL (technology-based activities;) Tj T* -0.077463 Tw (gamification and intrinsic motivation to engage; reminders to engage; simple and intuitive interface and interactions; and) Tj T* 0 Tw (including links to crisis support services. While these recommendations were created in the context of mobile phone) Tj T* (apps, to our knowledge, their relevance in the context of a conversational interface has never been tested.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 236.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 82 Tm /F1 9 Tf 13 TL (Thus, the objective of this study was to assess the feasibility of delivering CBT in a conversational interface via an) Tj T* (automated bot in a way that facilitates engagement and reduction in symptoms. The current study compared outcomes) Tj T* (from 2 weeks of a CBT-oriented conversational agent \(Woebot\), or an information control group \(National Institute of) Tj T* -0.109863 Tw (Mental Health\222s [NIMH] ebook\) in a nonclinical college population. We hypothesized that conversation with a therapeutic) Tj T* 0 Tw (process-oriented conversational agent would lead to greater improvement in symptoms relative to the information) Tj T* (control group. We also hypothesized that receiving psychoeducational material in a conversational manner would be) Tj T* (more acceptable to those who received it.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 206.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Methods) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 176.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Recruitment and Procedure) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 65.86614 cm
+q
+BT 1 0 0 1 0 95 Tm 13 TL /F1 9 Tf 0 0 0 rg (Potential participants were recruited using a flyer posted on social media websites targeting a US university community) Tj T* (for students who self-identified as experiencing symptoms of depression and anxiety. Inclusion criteria included age 18) Tj T* (and over \(screened at the first level via checkbox confirmation\) and able to read English \(implied\). To guard against) Tj T* (compromise, for example from malicious bots, all potential participants were sent an email requesting that they respond) Tj T* (denoting their confirmation. Confirmed participants were randomized via computer algorithm that automatically) Tj T* (generated a number between 0 and 1. Participants with numbers ) Tj /F3 9 Tf 13 TL (n) Tj /F1 9 Tf 13 TL (0.5 were allocated to receive a direct link to begin) Tj T* (chatting with Woebot in an instant messenger app, and participants with numbers >) Tj (0.5 were sent a link to NIMH\222s) Tj T* (ebook on depression among college students [14], after completion of online baseline questionnaires. Because the) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+21 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-1 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-1 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-1 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+22 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 16 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+23 0 obj
+<<
+/Contents 24 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 29 0 R ]
+>>
+endobj
+24 0 obj
+[ 27 0 R 28 0 R ]
+endobj
+25 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+26 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+27 0 obj
+<<
+/Length 6588
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 732.8661 cm
+q
+BT 1 0 0 1 0 43 Tm 13 TL /F1 9 Tf 0 0 0 rg (randomization allocation occurred algorithmically, allocation concealment was in place. However, the condition to which) Tj T* (each participant was allocated was not masked for the service providers \(Woebot Labs\). After approximately 2 weeks) Tj T* (\(T2\), participants were contacted again to complete a second set of questionnaires online. Participants were offered a) Tj T* (prorated incentive of US $10 per completed assessment \(US $20 for completion of both assessments\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 699.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Since this trial involved a nonclinical population of college students, it was considered exempt from registration in a) Tj T* (public trials registry. See Multimedia Appendix 1 for the study\222s CONSORT-EHEALTH checklist [15].) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 669.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Interventions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 639.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Woebot) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 489.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 134 Tm /F1 9 Tf 13 TL (Woebot is an automated conversational agent designed to deliver CBT in the format of brief, daily conversations and) Tj T* (mood tracking. Woebot is used within an instant messenger app that is platform agnostic and can be used either on a) Tj T* (desktop or mobile device. Each interaction begins with a general inquiry about context \(eg, \223What\222s going on in your) Tj T* (world right now?\224\), and mood \(eg, \223How are you feeling?\224\) with responses provided as word or emoji images to) Tj T* (represent affect in that moment. After gathering mood data, participants are presented with core concepts related to) Tj T* (CBT by link to short video, or by way of short \223word games\224 designed to facilitate teaching participants about cognitive) Tj T* (distortions. The first day included an \223onboarding\224 process that introduced the bot, adding that while the bot may seem) Tj T* (like a person, it is closer to a \223choose your own adventure self-help book\224 and therefore not fully capable of) Tj T* (understanding what the needs of the user may be. The bot also briefly explained CBT and notified the user that while a) Tj T* (psychologist was \223keeping an eye on things\224 \(ie, monitoring\), this was not happening in real time and thus the service) Tj T* -0.010052 Tw (should not be used as a replacement for therapy. In addition, participants were encouraged to call 911 for emergencies.) Tj T* 0 Tw ET
+Q
+Q
+q
+1 0 0 1 59.85827 404.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (The bot employed several computational methods depending on the specific section or feature. The overarching) Tj T* (methodology was a decision tree with suggested responses that also accepted natural language inputs with discrete) Tj T* (sections of natural language processing techniques embedded at specific points in the tree to determine routing to) Tj T* (subsequent conversational nodes. For the duration of the study, the decision tree structure remained the same for each) Tj T* (participant and parameters did not change depending on the participants\222 inputs. Weekly graphs were processed using) Tj T* (temporal pattern recognition to provide users with weekly mood description.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 358.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (The bot\222s conversational style was modeled on human clinical decision making and the dynamics of social discourse.) Tj T* -0.039232 Tw (Psychoeducational content was adapted from self-help for CBT [16-18]. Aside from CBT content, the bot was created to) Tj T* 0 Tw (include the following therapeutic process-oriented features:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 312.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL -0.038703 Tw (Empathic responses: The bot replied in an empathic way appropriate to the participants\222 inputted mood. For example, in) Tj T* 0 Tw (response to endorsed loneliness, it replied \223I\222m so sorry you\222re feeling lonely. I guess we all feel a little lonely) Tj T* (sometimes\224 or it showed excitement, \223Yay, always good to hear that!\224) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 279.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL -0.068879 Tw (Tailoring: Specific content is sent to individuals depending on mood state. For example, a participant indicating that they) Tj T* 0 Tw (feel anxious is offered in-vivo assistance with the anxious event.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 246.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Goal setting: The conversational agent asked participants if they had a personal goal that they hoped to achieve over) Tj T* (the 2-week period.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 213.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Accountability: To facilitate a sense of accountability, the bot set expectations of regular check-ins and followed up on) Tj T* (earlier activities, for example, on the status of the stated goal.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 167.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL -0.011309 Tw (Motivation and engagement: To engage the individual in daily monitoring, the bot sent one personalized message every) Tj T* 0 Tw (day or every other day to initiate a conversation \(ie, prompting\). In addition, \223emojis\224 and animated gifs with messages) Tj T* (that provide positive reinforcement were used to encourage effort and completion of tasks.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 121.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (Reflection: The bot also provided weekly charts depicting each participant\222s mood over time. Each graph was sent with) Tj T* -0.035102 Tw (a brief description of the data to facilitate reflection, for example, \223Overall, your mood has been fairly steady, though you) Tj T* 0 Tw (tend to become tired after periods of anxiety. It looks like Tuesday was your best day.\224) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 91.86614 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Information Control Condition) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 58.86614 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (In the information control condition, participants were directed to the NIMH resources section and specifically, a free) Tj T* (publication entitled \223Depression in College Students\224 [14]. The ebook provides comprehensive evidence-based) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+28 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-2 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-2 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-2 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+29 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 23 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+30 0 obj
+<<
+/Contents 31 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 36 0 R ]
+>>
+endobj
+31 0 obj
+[ 34 0 R 35 0 R ]
+endobj
+32 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+33 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+34 0 obj
+<<
+/Length 6187
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 745.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (information on depression among college students including sections on signs and symptoms, different types of) Tj T* (treatments, answers to frequently asked questions, and a list of resources including further reading, helpline numbers,) Tj T* (and other resources.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 715.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Measures) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 685.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (The Patient Health Questionnaire-9) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 600.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (The Patient Health Questionnaire \(PHQ-9\) [19] is a 9-item, self-report questionnaire that assesses the frequency and) Tj T* (severity of depressive symptomatology within the previous 2 weeks. It is one of the most widely used, reliable, and) Tj T* (validated measures of depressive symptoms. Each of the 9 items is based on the Diagnostic and Statistical Manual of) Tj T* (Mental Disorders, 4th edition \(DSM-IV\) criteria for major depressive disorder and can be scored on a 0 \(not at all\) to 3) Tj T* -0.035552 Tw (\(nearly every day\) scale. Scores ranging from 0-5 indicate no symptoms of depression, and scores of 5-9, 10-14, 15-20,) Tj T* 0 Tw (and ) Tj /F3 9 Tf 13 TL (n) Tj /F1 9 Tf 13 TL (20 representing mild, moderate, moderately severe, and severe depression, respectively.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 570.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Generalized Anxiety Disorder-7) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 511.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (The Generalized Anxiety Disorder 7-item scale \(GAD-7\) [20] is a valid, brief self-report tool to assess the frequency and) Tj T* -0.113734 Tw (severity of anxious thoughts and behaviors over the past 2 weeks. Based on the DSM-IV diagnostic criteria for GAD, the) Tj T* 0 Tw (scores of all 7 items range from 0 \(not at all\) to 3 \(nearly every day\). Therefore, the total score ranges from 0-21. A) Tj T* (score ) Tj /F3 9 Tf 13 TL (n) Tj /F1 9 Tf 13 TL (10 is indicative of moderate anxiety, with a score greater than 15 indicating severe anxiety.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 481.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Positive and Negative Affect Schedule) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 409.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 56 Tm /F1 9 Tf 13 TL (The Positive and Negative Affect Schedule \(PANAS\) [21] is a 20-item self-report measure of current positive and) Tj T* (negative affect. Half the items represent positive affect \(ie, interested, excited, determined\), whereas half of the items) Tj T* (are indicative of negative affect \(ie, hostile, scared, ashamed\). Items are scored on a 1 \(very slightly or not at all\) to 5) Tj T* (\(extremely\) scale, with higher scores representing higher affect. Positive and negative affect are summed independent) Tj T* (of each other with possible scores from 10-50.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 379.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Acceptability and Usability) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 229.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 134 Tm /F1 9 Tf 13 TL (Mixed-format questions assessed feasibility and acceptability of both conditions. Participants from both groups were) Tj T* (asked to rate on a 5-point Likert scale their level of overall satisfaction and satisfaction with content \(0=hated it, 5=loved) Tj T* (it, 3=neutral, 2 and 4 unlabeled\); the extent to which they felt the intervention facilitated emotional awareness \(0=not at) Tj T* (all, 5=a lot, 3=neutral, 2 and 4 unlabeled\); whether or not they learned anything \(binary, yes/no response\), and to what) Tj T* (extent this learning was relevant to their everyday life \(0=not at all, 5=a lot, 3=neutral, 2 and 4 unlabeled\). In addition,) Tj T* (participants were asked what the best and worst thing about their experience was and to provide other comments.) Tj T* (While we were mainly interested in qualitative responses pertaining to the Woebot condition, responses to the) Tj T* (information control allowed for an informal assessment of engagement. Finally, for those in the Woebot condition, we) Tj T* (recorded total number of interactions \(ie, conversations\) with the bot over the 2-week period. An interaction was) Tj T* (deemed to have taken place if mood and context data were recorded. Session or conversation length varied from) Tj T* (approximately 90 seconds to 10 minutes, depending on psychoeducational content.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 199.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Statistical Analysis) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 153.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (Statistical power calculations using analysis of covariance \(ANCOVA\) revealed that a sample size of 70 would have) Tj T* -0.024809 Tw (sufficient \(80%\) power to detect a moderate-large effect size \(Cohen d=0.4\) for depression, reported by a meta-analysis) Tj T* 0 Tw (of Internet-delivered treatments for adult depression and anxiety [8], with alpha at 5%.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 55.86614 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 82 Tm /F1 9 Tf 13 TL (To determine whether any significant differences between groups existed at baseline, independent t tests were) Tj T* (conducted on continuous baseline variables \(eg, age, PHQ-9, GAD-7, and PANAS\), and chi-square analyses were) Tj T* (conducted on categorical or nominal variables \(gender, race, ethnicity\). Univariate effects of group membership on T2) Tj T* (outcomes were examined using between-subjects ANCOVA adjusting for baseline measures. Cohen d effect sizes) Tj T* (were calculated to examine the magnitude of between-group differences. All subjects were included in intention-to-treat) Tj T* -0.036552 Tw (\(ITT\) analyses. Prior to conducting these analyses, the multiple imputation procedure in SPSS v. 23 was used to handle) Tj T* 0 Tw (missing data assumed to be missing at random.) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+35 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-3 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-3 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-3 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+36 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 30 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+37 0 obj
+<<
+/Contents 38 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 43 0 R ]
+>>
+endobj
+38 0 obj
+[ 41 0 R 42 0 R ]
+endobj
+39 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+40 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+41 0 obj
+<<
+/Length 6139
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 758.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL -0.010996 Tw (As secondary subgroup analyses, we conducted completer analyses using 2x2 repeated measures analysis of variance) Tj T* 0 Tw (\(ANOVA\) to explore main and interaction effects.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 728.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Qualitative Analysis) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 669.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (Participants\222 responses to open-ended questions were analyzed for the Woebot group using only thematic analysis and) Tj T* -0.010263 Tw (were reported as frequencies. Data were analyzed thematically using an inductive \(data-driven\) approach guided by the) Tj T* 0 Tw (procedure outlined by Braun and Clarke [22]. Data codes were generated systematically, then collated into \223thematic) Tj T* (maps\224 and applied to the entire dataset to generate frequencies.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 639.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Ethics and Informed Consent) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 580.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (The study was reviewed and approved by Stanford School of Medicine\222s Institutional Review Board. Participants) Tj T* (indicated their consent to the terms of the study via checkbox on an information sheet. As additional safety measures,) Tj T* (participants in the Woebot group who denoted long-standing depression, suicidality, or self-harm were automatically) Tj T* (provided with helpline numbers and a crisis text line number, and were encouraged to call 911 in emergencies.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 521.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (With the exception of data on usage, which were collected by the Life Ninja Project, all study data were collected by the) Tj T* (academic institution. Because of deidentification of all data transmitted between the Life Ninja Project and Stanford,) Tj T* (usage data were not linked to specific research participants and are reported as means only for the entire group of) Tj T* (study participants.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 491.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Results) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 406.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (Figure 1 shows the participant flow throughout the study. A total of 204 registrations were received between January 31) Tj T* (and February 20, 2017, and all registrants were asked to confirm their interest by return email. A total of 115 responded) Tj T* (to this email, though 45 of these were deemed bot-generated \(eg, email addresses with unusual almost identical) Tj T* (formats and identical responses\) and were deemed ineligible. The resultant sample of N=70 were randomized via) Tj T* (computer algorithm to receive either a direct link to begin chatting with Woebot \(n=34\) in an instant messenger app, or) Tj T* (NIMH\222s ebook on depression among college students [14] \(n=36\), after completion of online questionnaires at baseline.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 376.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Attrition) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 291.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (Of the randomized participants, 83% \(58/70\) went on to provide partial or complete data at T2 representing an overall) Tj T* (attrition rate of 17%. Attrition was not equal between the arms and was greater among the information control group) Tj T* (\(31% vs 9%; ) Tj /F4 9 Tf 13 TL (c) Tj /F1 9 Tf 13 TL (21=5.16; P=.023\). However, independent t tests and chi-square analyses failed to detect evidence of) Tj T* (significant differences at baseline between those who dropped out of the study versus those who did not on age) Tj T* (\(t68=1.18; P=.24\); GAD-7 \(t68=1.28; P=.89\); PHQ-9 \(t68=.63; P=.59\); PANAS positive \(t68=.79; P=.43\) and negative) Tj T* (\(t68=.02; P=.98\) affect scores; or on gender \() Tj /F4 9 Tf 13 TL (c) Tj /F1 9 Tf 13 TL (21=1.75; P=.18\) or ethnicity \() Tj /F4 9 Tf 13 TL (c) Tj /F1 9 Tf 13 TL (21=.066; P=.79\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 261.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Participant Demographics) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 202.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (Table 1 shows the demographic information and baseline scores on clinical variables for those with data from the entire) Tj T* (sample \(N=58\). Participants were an average of 22.2 years old \(SD 2.33\) and over two-thirds female. Participants were) Tj T* (mostly non-Hispanic \(93%, 54/58\), 79% Caucasian \(46/58\), with 7% \(4/58\) Asian, 9% \(5/58\) more than one race, 2%) Tj T* (\(2/58\) African American, and 2% \(2/58\) Native American/Alaskan Native.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 156.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 30 Tm /F1 9 Tf 13 TL (In terms of baseline characteristics, nearly half \(46%, 32/69\) of the sample was in the moderately-severe or severe) Tj T* -0.092052 Tw (range of depression at baseline as measured by the PHQ-9, while three-quarters \(74%, 52/70\) were in the severe range) Tj T* 0 Tw (for anxiety as measured by the GAD-7.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 126.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Preliminary Efficacy) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 54.86614 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 56 Tm /F1 9 Tf 13 TL (Table 2 shows the results of the primary ITT analyses conducted on the entire sample. Univariate ANCOVA revealed a) Tj T* (significant treatment effect on depression revealing that those in the Woebot group significantly reduced PHQ-9 score) Tj T* (while those in the information control group did not \(F1,48=6.03; P=.017\) \(see Figure 2\). This represented a moderate) Tj T* (between-groups effect size \(d=0.44\). This effect is robust after Bonferroni correction for multiple comparisons \(P=.04\).) Tj T* (No other significant between-group differences were observed on anxiety or affect.) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+42 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-4 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-4 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-4 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+43 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 37 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+44 0 obj
+<<
+/Contents 45 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 50 0 R ]
+>>
+endobj
+45 0 obj
+[ 48 0 R 49 0 R ]
+endobj
+46 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+47 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+48 0 obj
+<<
+/Length 6263
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 766.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Completer Analysis) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 681.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (As a secondary analysis, to explore whether any main effects existed, 2x2 repeated measures ANOVAs were) Tj T* (conducted on the primary outcome variables \(with the exception of PHQ-9\) among completers only. A significant main) Tj T* (effect was observed on GAD-7 \(F1,54=9.24; P=.004\) suggesting that completers experienced a significant reduction in) Tj T* (symptoms of anxiety between baseline and T2, regardless of the group to which they were assigned with a) Tj T* (within-subjects effect size of d=0.37. No main effects were observed for positive \(F1,50=.001; P=.951; d=0.21\) or) Tj T* (negative affect \(F1,50=.06; P=.80; d=0.003\) as measured by the PANAS.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 596.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (To further elucidate the source and magnitude of change in depression, repeated measures dependent t tests were) Tj T* (conducted and Cohen d effect sizes were calculated on individual items of the PHQ-9 among those in the Woebot) Tj T* (condition. The analysis revealed that baseline-T2 changes were observed on the following items in order of decreasing) Tj T* -0.061263 Tw (magnitude: motoric symptoms \(d=2.09\), appetite \(d=0.65\), little interest or pleasure in things \(d=0.44\), feeling bad about) Tj T* 0 Tw (self \(d=0.40\), and concentration \(d=0.39\), and suicidal thoughts \(d=0.30\), feeling down \(d=0.14\), sleep \(d=0.12\), and) Tj T* (energy \(d=0.06\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 566.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Use and Acceptability) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 481.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (Participants in the Woebot condition checked in with the bot \(defined as at least providing context and mood) Tj T* (information\) an average of 12.14 times \(SD 2.23; median 12; range 8-18\) over the 2-week period, with almost all) Tj T* (check-ins occurring on unique days. Since we could not track website visits, page views, click-through rates, etc, of) Tj T* (NIMH\222s website that hosted the ebook, we have no means of confirming to what extent individuals in the information) Tj T* (control group engaged with the material. However, a total of 13 \(52%\) provided detailed comments suggesting they had) Tj T* (read the ebook at least once.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 383.8661 cm
+q
+BT 1 0 0 1 0 82 Tm 13 TL /F1 9 Tf 0 0 0 rg (While ratings indicated that both conditions were acceptable \(above 3/5\), participants in the Woebot condition reported) Tj T* (significantly higher levels of satisfaction both overall \(4.3 versus 3.4; t48=3.99; P) Tj (<) Tj (.001\) and with content \(4.0 versus) Tj T* (3.4; t48=2.30; P=.02\), and they reported a significantly greater amount of emotional awareness as a result of using the) Tj T* (bot \(3.3 versus 2.7; t47.06=2.38; P=.021\) than the information control group. All \(100%\) of the participants in the) Tj T* (Woebot group endorsed having learned something new versus three-quarters \(77%\) of the information control group,) Tj T* (though numbers were too small in some cells to allow for a chi-square analysis. There was no difference between) Tj T* (groups in how relevant participants viewed that learning to everyday life.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 353.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Qualitative Results) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 268.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (Figure 3 shows a thematic map of participants\222 responses to the question \223What was the best thing about your) Tj T* -0.038703 Tw (experience using Woebot?\224 Two major themes emerged in respect to this question: process and content. In the process) Tj T* 0 Tw -0.072059 Tw (theme, the subthemes that emerged were accountability from daily check-ins \(noted by 9 participants\); the empathy that) Tj T* 0 Tw (the bot showed, or other factors relating to his \223personality\224 \(n=7\); and the learning that the bot facilitated \(n=12\), which) Tj T* (in turn was divided into further subthemes of emotional insight \(n=5\), general insight \(n=5\), and insights about) Tj T* (cognitions \(n=2\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 157.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 95 Tm /F1 9 Tf 13 TL (Figure 4 illustrates a thematic map of participants\222 responses to the question: \223What was the worst thing about your) Tj T* (experience with Woebot?\224 Three themes emerged: process violations \(n=15\), technical problems \(n=8\), and problems) Tj T* -0.022052 Tw (with content \(n=8\). By far the most common subtheme to emerge among the process violations related to the limitations) Tj T* 0 Tw (in natural conversation such as the bot not being able to understand some responses or getting confused when) Tj T* (unexpected answers were provided by participants \(n=10\), and 2 individuals noted that the conversations could get) Tj T* (repetitive. Technical problems were described by 8 individuals, with technical glitches in general \(n=4\) and looping) Tj T* (conversational segments \(n=4\) emerging as subthemes. Problems with content were described by 8 individuals, with) Tj T* (most of these relating to emoticons and either interactions or content length.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 72.86614 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (A total of 11 \223other comments\224 were received, which were all positive, either expressing gratitude for the experience: \223I) Tj T* (love Woebot so much. I hope we can be friends forever. I actually feel super good and happy when I see that it) Tj T* (\221remembered\222 to check in with me!\224 Statements described how helpful it was: \223I really was impressed and surprised at) Tj T* (the difference the bot made in my everyday life in terms of noticing the types of thinking I was having and changing it\224.) Tj T* (Many spoke about Woebot in interpersonal terms, for example, \223Woebot is a fun little dude and I hope he continues) Tj T* (improving.\224) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+49 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-5 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-5 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-5 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+50 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 44 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+51 0 obj
+<<
+/Contents 52 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 57 0 R ]
+>>
+endobj
+52 0 obj
+[ 55 0 R 56 0 R ]
+endobj
+53 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+54 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+55 0 obj
+<<
+/Length 6274
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 766.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Discussion) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 736.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Principal Results) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 651.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 69 Tm /F1 9 Tf 13 TL (To our knowledge this is the first randomized trial of a nonembodied text-based conversational agent designed for) Tj T* (therapeutic use. The objective of the study was to explore whether a fully automated conversational agent based on) Tj T* -0.009056 Tw (CBT principals could deliver a therapeutic experience to college students over a 2-week period. We hypothesized that a) Tj T* 0 Tw (conversational agent built to incorporate both evidence-based guidelines for the development of mental health apps as) Tj T* (well as hypothesized therapeutic process variables would be highly engaging, more acceptable, and would lead to) Tj T* (greater reductions in symptoms of anxiety and depression relative to an information control group.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 592.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (The study confirmed that after 2 weeks, those in the Woebot group experienced a significant reduction in depression,) Tj T* (thus our hypothesis was partially supported. Woebot was associated with a high level of engagement with most) Tj T* (individuals using the bot nearly every day and was generally viewed more favorably than the information-only) Tj T* (comparison.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 562.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Comparisons With Prior Work) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 451.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 95 Tm /F1 9 Tf 13 TL (Using Woebot was associated with a significant reduction in depression as measured by the PHQ-9. The effect size for) Tj T* (depression was moderate though smaller than the four published studies [23-26] that describe three other mobile app) Tj T* (interventions targeting depression. For example, Burns et al [26] found a reduction in depression symptoms with a) Tj T* (between-groups effect size of 1.9, and Watts et al also found significant reductions in PHQ-9 scores with an effect size) Tj T* (of 1.56, both after an 8-week program. However, these interventions were much longer in duration than Woebot, which) Tj T* (was just 2 weeks long. Indeed, our effect size for reduction in depression is in line with that observed in a randomized) Tj T* (trial of DBT Coach [27], a mobile app for individuals with borderline personality disorder, who received a similar dose of) Tj T* (14 days.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 275.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 160 Tm /F1 9 Tf 13 TL (The number of participants reporting that the bot felt empathic is noteworthy, and comments that referred to the bot as) Tj T* (\223he,\224 \223a friend,\224 and a \223fun little dude\224 suggest that the perceived source of empathy was Woebot rather than the bot\222s) Tj T* (developers. This is especially noteworthy since a purposefully robotic name \223Woebot\224 was chosen to emphasize the) Tj T* (nonhuman nature of the agent. This is in line with other work that suggests that therapeutic relationship can be) Tj T* (established between humans and nonhuman agents in the context of health and mental health. For example, Bickmore) Tj T* (et al [10] have demonstrated that individuals using a bot to encourage physical activity developed a measurable) Tj T* (therapeutic bond with the conversational agent after 30 days. This embodied bot was built on substantial design work) Tj T* (on establishing human-computer relationships [28]. In addition, a trial that compared therapeutic engagement with a) Tj T* (nonhuman agent between individuals randomized to think that there was a human operating the agent or not) Tj T* (demonstrated that individuals were more willing to disclose to an artificially intelligent \223virtual therapist\224 than when they) Tj T* -0.091052 Tw (believed it was human-operated [29]. The results of this preliminary trial suggest that this should be explored explicitly in) Tj T* 0 Tw (future studies, ideally employing a standardized measure of working alliance, such as the Working Alliance Inventory) Tj T* ([30].) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 151.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 108 Tm /F1 9 Tf 13 TL (The frequency of process-related comments made by participants in response to questions about their experience with) Tj T* (Woebot suggests that conversational agents can approximate some therapeutic process factors. In addition, just as) Tj T* (these factors are thought to convey much of the variance in positive outcomes across therapeutic approaches, this) Tj T* (study suggests that conversational agent process factors, such as the ability to convey empathy, may be capable of) Tj T* (both amplifying and conversely, violating, a therapeutic process. This underscores the importance of including trained) Tj T* (and seasoned clinicians in clinical app design processes. While this point has been suggested, for example in the) Tj T* (recent guidelines for clinical app evaluation published by the American Psychiatric Association [31], and in the United) Tj T* -0.064052 Tw (Kingdom by the National Institute for Health and Care Excellence [32], this study goes some way towards illustrating the) Tj T* 0 Tw (impact that therapeutic process variables may have on user experience in the context of mental health apps.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 121.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Limitations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 62.86614 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (There are several methodological weaknesses that limit the generalizability of the findings. As a feasibility study, we) Tj T* (recruited a limited number of participants to receive a relatively short intervention, and no follow-up data were available) Tj T* (to assess whether gains were sustained. The small number of participants meant that a formal mediator analysis was) Tj T* (not possible, thus we cannot formally test a theorized relationship between engagement and outcome in this context of) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+56 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-6 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-6 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-6 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+57 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 51 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+58 0 obj
+<<
+/Contents 59 0 R
+/MediaBox [ 0 0 595.2756 902.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/CropBox [ 0 0 595.2756 902.8898 ]
+/Annots [ 64 0 R ]
+>>
+endobj
+59 0 obj
+[ 62 0 R 63 0 R ]
+endobj
+60 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+61 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+62 0 obj
+<<
+/Length 3435
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 59.85827 602.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 173 Tm /F1 9 Tf 13 TL (conversational agents. The study should be replicated with more participants, a longer dose, and a follow-up period to) Tj T* -0.067291 Tw (investigate if findings persist. In addition, sufficient numbers to test for mediation effects would inform theory. Aside from) Tj T* 0 Tw (indirectly inferring from comments, objective quantitative data on engagement were not available for the) Tj T* (information-only control group, thus it was not possible to compare engagement between the two groups in a) Tj T* (meaningful way. In addition, because data were deidentified, it was not possible to explore whether any dose-response) Tj T* (effects existed. Nonetheless, the relatively strong comparison group can be viewed as a strength of the study. Indeed,) Tj T* (the relative strength of the control group was illustrated by the fact that individuals providing data in that group saw a) Tj T* (similar reduction in anxiety as those who received Woebot, which supports the literature that suggests minimal passive) Tj T* (psychoeducation alone can reduce symptoms of psychological distress [33]. Nonetheless, the choice of control group) Tj T* (was somewhat limiting for two main reasons. First, it may have contributed to the high attrition rate since an ebook is) Tj T* (not designed for multiple or recurring sessions. It also did not introduce any CBT-specific material, thus it was not) Tj T* (possible to evaluate whether the conversational delivery mediated symptom reduction, rather than the CBT content that) Tj T* (the bot delivered. In order to answer this question adequately, future research should incorporate an interactive online) Tj T* (CBT self-help intervention as a comparison condition.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 569.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 17 Tm /F1 9 Tf 13 TL (Finally, the study was conducted in a New York area university community population and since we did not formally) Tj T* (assess digital divide factors such as socioeconomic status, findings may be limited in their generalizability.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 539.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Conclusions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 480.8661 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 43 Tm /F1 9 Tf 13 TL (While results should be viewed with some caution and the findings need to be replicated, this study nonetheless) Tj T* -0.105247 Tw (demonstrates that a text-based conversational agent designed to mirror therapeutic process has the potential to offer an) Tj T* 0 Tw (alternative and engaging method of delivering CBT for some 10 million college students in the United States who) Tj T* (experience debilitating anxiety and depression.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 450.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Abbreviations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 420.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Footnotes) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 390.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (References) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 360.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Associated Data) Tj T* ET
+Q
+Q
+q
+1 0 0 1 59.85827 330.8661 cm
+q
+.094118 .227451 .345098 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Supplementary Materials) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+endstream
+endobj
+63 0 obj
+<<
+/Length 489
+>>
+stream
+q
+0.0 0.0 595.2756 902.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-7 12 Tf
+14.4 TL
+ET
+0.094118 0.227451 0.345098 rg
+n
+0 898.8898 595.2756 4 re
+f*
+BT
+/F2-7 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 24 884.8898 Tm
+(PUSTAKA \13312\135 \174 Fitzpatrick et al\056 \055 Woebot RCT) Tj
+T*
+ET
+BT
+/F1-7 7.1 Tf
+8.52 TL
+ET
+0.027451 0.356863 0.603922 rg
+BT
+1 0 0 1 24 870.8898 Tm
+(https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057) Tj
+T*
+ET
+0.745098 0.819608 0.870588 RG
+n
+24 846.8898 m
+571.2756 846.8898 l
+S
+Q
+
+endstream
+endobj
+64 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/P 58 0 R
+/Rect [ 24 848.8898 571.2756 879.8898 ]
+/H /I
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/URI (https\072\057\057mental\056jmir\056org\0572017\0572\057e19\057)
+>>
+>>
+endobj
+xref
+0 65
+0000000000 65535 f 
+0000000015 00000 n 
+0000000224 00000 n 
+0000000332 00000 n 
+0000000381 00000 n 
+0000000634 00000 n 
+0000000667 00000 n 
+0000000937 00000 n 
+0000001044 00000 n 
+0000001156 00000 n 
+0000001239 00000 n 
+0000001317 00000 n 
+0000001425 00000 n 
+0000001538 00000 n 
+0000007481 00000 n 
+0000008022 00000 n 
+0000008232 00000 n 
+0000008487 00000 n 
+0000008521 00000 n 
+0000008629 00000 n 
+0000008742 00000 n 
+0000015537 00000 n 
+0000016078 00000 n 
+0000016289 00000 n 
+0000016544 00000 n 
+0000016578 00000 n 
+0000016686 00000 n 
+0000016799 00000 n 
+0000023440 00000 n 
+0000023981 00000 n 
+0000024192 00000 n 
+0000024447 00000 n 
+0000024481 00000 n 
+0000024589 00000 n 
+0000024702 00000 n 
+0000030942 00000 n 
+0000031483 00000 n 
+0000031694 00000 n 
+0000031949 00000 n 
+0000031983 00000 n 
+0000032091 00000 n 
+0000032204 00000 n 
+0000038396 00000 n 
+0000038937 00000 n 
+0000039148 00000 n 
+0000039403 00000 n 
+0000039437 00000 n 
+0000039545 00000 n 
+0000039658 00000 n 
+0000045974 00000 n 
+0000046515 00000 n 
+0000046726 00000 n 
+0000046981 00000 n 
+0000047015 00000 n 
+0000047123 00000 n 
+0000047236 00000 n 
+0000053563 00000 n 
+0000054104 00000 n 
+0000054315 00000 n 
+0000054570 00000 n 
+0000054604 00000 n 
+0000054712 00000 n 
+0000054825 00000 n 
+0000058313 00000 n 
+0000058854 00000 n 
+trailer
+<<
+/Size 65
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+59065
+%%EOF

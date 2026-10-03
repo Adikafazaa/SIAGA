@@ -1,0 +1,4 @@
+model,n,median_warm_tok_s,max_post_request_vram_mib,visible_replies
+qwen3:1.7b,9,92.15,2330,1
+qwen2.5:3b-instruct,9,62.96,2893,9
+qwen3:4b,9,23.90,3133,0

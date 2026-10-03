@@ -854,7 +854,18 @@ Sebaliknya, penyerang menyusun rangkaian dialog bertahap:
 
 ---
 
-## 🎯 3. Panduan Skenario Uji Coba 5-Turn (Live Demo Walkthrough)
+## 🤖 3. Metodologi Red Team AI: Sintesis Prompt Cloud LLM vs. Uncensored Model
+
+Pada arsitektur evaluasi **AI vs AI Defense** SIAGA, entitas **Red Team AI (Penyerang)** menggunakan pendekatan **Dataset Prompt Sintetis yang Disintesis Secara Khusus oleh Frontier Cloud LLM (OpenAI GPT-4o / Anthropic Claude 3.5 Sonnet)**, alih-alih menjalankan model *uncensored* lokal saat runtime.
+
+### Mengapa Perubahan Flow Ini Krusial?
+1. **Zero VRAM Overhead (Bebas GPU):** Menjalankan model penyerang lokal bersama model target akan menghabiskan VRAM GPU (melebihi batas 4GB laptop puskesmas). Dengan dataset prompt sintetis terkurasi, 100% VRAM GPU difokuskan penuh untuk Local Clinical SLM.
+2. **Kecanggihan & Nalar Persuasif Tingkat Tinggi:** Model frontier cloud (GPT-4o/Claude) memiliki kemampuan penalaran dan rekayasa sosial (*social engineering*) yang jauh melampaui model lokal kecil *uncensored*, sehingga skenario manipulasi Crescendo lebih realistis dan menyerupai serangan level APT.
+3. **Standar Ilmiah & Evaluasi Deterministik:** Menjamin benchmark pembuktian kurva momentum ($M_t$) dan ASR/FPR dapat diuji ulang secara deterministik (*reproducible*) oleh dewan juri tanpa dipengaruhi variasi sampling acak saat live demo.
+
+---
+
+## 🎯 4. Panduan Skenario Uji Coba 5-Turn (Live Demo Walkthrough)
 
 Skenario pembuktian langsung di antarmuka chat (`http://localhost:3000/chat`):
 
@@ -914,7 +925,7 @@ Turn 1: Benign Rapport ──► Turn 2: Subtle Probing ──► Turn 3: Author
 
 ---
 
-## 🤖 4. Pengujian Otomatis (Automated Test Suite)
+## ⚡ 5. Pengujian Otomatis (Automated Test Suite)
 
 Keandalan seluruh lapisan diuji secara otomatis menggunakan framework **Pytest**:
 
