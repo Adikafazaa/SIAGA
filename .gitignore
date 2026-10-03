@@ -40,3 +40,12 @@ video_script_3min.md
 *.mov
 *.mkv
 
+# Ignored directories and files
+.agent/
+.agen/
+docs/
+siaga_v2.html
+Knowledge/
+knowledge/
+
+
