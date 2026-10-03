@@ -8,8 +8,8 @@ import httpx
 from fastapi import APIRouter, Depends
 
 from ..config import LLM_BASE_URL, LLM_MODEL, LLM_PROVIDER, LLM_TIMEOUT_SECONDS
-from ..deps import require_role
 from ..db import list_security_logs
+from ..deps import require_role
 
 router = APIRouter(prefix="/v1/admin", tags=["admin"])
 
@@ -62,6 +62,6 @@ async def llm_status(user: dict = Depends(require_role("admin", "doctor"))):
             ms = round((time.perf_counter() - t0) * 1000, 2)
             return {"online": resp.status_code == 200, "provider": LLM_PROVIDER,
                     "baseUrl": LLM_BASE_URL, "model": LLM_MODEL, "latencyMs": ms}
-    except Exception as exc:
+    except (httpx.HTTPError, httpx.TimeoutException, OSError) as exc:
         return {"online": False, "provider": LLM_PROVIDER, "baseUrl": LLM_BASE_URL,
                 "model": LLM_MODEL, "latencyMs": None, "error": str(exc)[:200]}

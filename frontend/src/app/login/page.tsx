@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Loader2, LogIn, ShieldCheck } from "lucide-react";
+import { Loader2, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useAuth } from "@/features/auth/auth-provider";
 import { DEMO_ACCOUNTS, ROLE_HOME } from "@/lib/constants";
+import { AuthShell } from "@/components/auth/AuthShell";
 
 const schema = z.object({
   email: z.string().email("Format email tidak valid"),
@@ -20,18 +21,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 function AuthFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-care-bg px-4 py-10">
-      <div className="mb-6 flex flex-col items-center gap-1.5">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-care-blue text-white">
-          <ShieldCheck size={22} />
-        </span>
-        <p className="font-mono text-lg font-semibold tracking-[0.25em] text-slate-900">SIAGA</p>
-        <p className="text-xs text-slate-500">PsychoBot · Konseling Digital Terproteksi</p>
-      </div>
-      {children}
-    </div>
-  );
+  return <AuthShell>{children}</AuthShell>;
 }
 
 export default function LoginPage() {
@@ -83,8 +73,8 @@ export default function LoginPage() {
 
   return (
     <AuthFrame>
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-base font-semibold text-slate-900">Masuk ke akun Anda</h1>
+      <div className="w-full max-w-md rounded-3xl border border-white/80 bg-white/80 p-6 shadow-[0_12px_32px_rgba(22,40,49,.08)]">
+        <h2 className="text-lg font-extrabold text-slate-900">Masuk ke akunmu</h2>
         <p className="mb-5 mt-1 text-xs text-slate-500">
           Lanjutkan konseling, asesmen, atau konsol klinis Anda.
         </p>
@@ -124,7 +114,7 @@ export default function LoginPage() {
       </div>
 
       {isMockAuth && (
-        <div className="mt-4 w-full max-w-md rounded-xl border border-dashed border-slate-300 bg-white/60 p-4">
+        <div className="mt-4 w-full max-w-md rounded-2xl border border-dashed border-[#c8dfe2] bg-white/60 p-4">
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
             Akun demo (demo mode)
           </p>

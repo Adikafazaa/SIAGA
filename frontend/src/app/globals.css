@@ -1,19 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Aksen HUD statis — satu-satunya hex di luar theme/colors.ts (DESIGN.md §10) */
   --hud-line: #44548a;
+  --hc-primary: #1a7f8e;
+  --hc-deep: #0b5963;
+  --hc-green: #7ea172;
+  --hc-canvas: #f7fcfd;
+  --hc-text: #162831;
+  --hc-muted: #5d7077;
+  --hc-danger: #e06d6d;
+  --font-inter: 'Urbanist';
+  --font-montserrat: 'Urbanist';
+  --font-jetbrains: ui-monospace;
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body {
   @apply antialiased;
+  font-family: 'Urbanist', Arial, sans-serif;
+  color: var(--hc-text);
+  background: linear-gradient(135deg, #f7fcfd 0%, #eaf7f8 52%, #dceff3 100%);
 }
+
+button, input, textarea, select { font: inherit; }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #0e7490; outline-offset: 3px; }
+
+.hc-canvas { min-height: 100dvh; background: radial-gradient(circle at 15% 16%, #d9f2f5 0, transparent 35%), radial-gradient(circle at 85% 83%, #e4f2df 0, transparent 32%), linear-gradient(135deg, #f7fcfd, #eaf7f8 52%, #dceff3); }
+.hc-glass { background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.88); box-shadow: 0 12px 32px rgba(22,40,49,.08); backdrop-filter: blur(18px); }
+.hc-glass-strong { background: rgba(255,255,255,.88); border: 1px solid rgba(255,255,255,.92); box-shadow: 0 20px 48px rgba(22,40,49,.1); backdrop-filter: blur(22px); }
+.hc-card { border-radius: 24px; }
+.hc-pill { border-radius: 9999px; }
+.hc-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: .65rem 1.35rem; border-radius: 9999px; font-weight: 700; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+.hc-btn:hover { transform: translateY(-2px); }
+.hc-btn-primary { color: white; background: linear-gradient(135deg, #1a7f8e, #0b5963); box-shadow: 0 8px 20px rgba(26,127,142,.2); }
+.hc-btn-primary:hover { background: linear-gradient(135deg, #146875, #084951); }
+.hc-btn-ghost { color: var(--hc-deep); background: rgba(255,255,255,.78); border: 1px solid rgba(26,127,142,.18); }
+.hc-btn-danger { color: white; background: #d85d62; }
+.hc-section-title { font-size: clamp(1.45rem, 2vw, 2rem); font-weight: 800; letter-spacing: -.025em; }
+.hc-muted { color: var(--hc-muted); }
+.hc-brand { display: inline-flex; align-items: center; gap: .75rem; color: var(--hc-text); font-size: 1.35rem; font-weight: 800; letter-spacing: -.03em; }
+.hc-brand-mark { display: inline-block; width: 42px; height: 42px; flex: none; border-radius: 13px; background-color: #faf9f5; background-image: url('/havencare-logo.jpeg'); background-repeat: no-repeat; background-size: 220% 220%; background-position: 50% 39%; box-shadow: 0 4px 14px rgba(22,40,49,.12); }
+.hc-brand-mark-large { width: 192px; height: 192px; border-radius: 42px; box-shadow: 0 25px 60px rgba(22,40,49,.16); }
+.hc-input { width: 100%; min-height: 48px; padding: .75rem 1rem; border: 1px solid #c8dfe2; border-radius: 14px; color: var(--hc-text); background: rgba(255,255,255,.85); }
+.hc-input:focus { border-color: var(--hc-primary); outline: 3px solid rgba(26,127,142,.13); }
+.hc-chip { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 45px; padding: .6rem .85rem; border: 1px solid #cde2e4; border-radius: 9999px; background: rgba(255,255,255,.82); color: var(--hc-text); font-weight: 700; }
+.hc-chip[aria-pressed="true"], .hc-chip.active { border-color: var(--hc-primary); background: #e1f3f4; color: var(--hc-deep); box-shadow: 0 0 0 3px rgba(26,127,142,.1); }
+.hc-label { color: var(--hc-primary); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.hc-divider { border-color: rgba(26,127,142,.12); }
+.hc-auth-content input { min-height: 48px; border-color: #c8dfe2; border-radius: 14px; background: rgba(255,255,255,.85); }
+.hc-auth-content label { color: #334b52; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 
 /* Latar konsol SOC: grid titik halus (DESIGN.md §4) */
 .soc-grid {

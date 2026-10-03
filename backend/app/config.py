@@ -25,7 +25,7 @@ def _load_dotenv() -> None:
                     k, v = k.strip(), v.strip().strip("'\"")
                     if k and k not in os.environ:
                         os.environ[k] = v
-            except Exception:
+            except (OSError, UnicodeDecodeError):
                 pass
 
 
@@ -68,7 +68,14 @@ API_KEY = os.getenv("SIAGA_API_KEY", "siaga-dev-key")
 PAYLOAD_CAP_BYTES = int(os.getenv("SIAGA_PAYLOAD_CAP_KB", "32")) * 1024
 RATE_LIMIT_PER_WINDOW = int(os.getenv("SIAGA_RATE_LIMIT", "100"))
 RATE_WINDOW_SECONDS = int(os.getenv("SIAGA_RATE_WINDOW_S", "60"))
-CORS_ORIGINS = [o for o in os.getenv("SIAGA_CORS_ORIGINS", "http://localhost:3000").split(",") if o]
+CORS_ORIGINS = [
+    o.strip()
+    for o in os.getenv(
+        "SIAGA_CORS_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001",
+    ).split(",")
+    if o.strip()
+]
 
 # ── Privasi (Zero-Plaintext Retention) ──────────────────────────────────────
 SESSION_TTL_HOURS = int(os.getenv("SIAGA_TTL_HOURS", "24"))

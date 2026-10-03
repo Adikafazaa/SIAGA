@@ -1,13 +1,19 @@
 """PsychoBot Clinical Care & SIAGA Guardrail Platform - FastAPI entrypoint."""
 from __future__ import annotations
 
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 
-from .config import CORS_ORIGINS, PAYLOAD_CAP_BYTES, RATE_LIMIT_PER_WINDOW, RATE_WINDOW_SECONDS
+from .config import (
+    CORS_ORIGINS,
+    PAYLOAD_CAP_BYTES,
+    RATE_LIMIT_PER_WINDOW,
+    RATE_WINDOW_SECONDS,
+)
 from .engine import get_engine_instance
 from .routers import admin, assessments, chat, doctor, users
 
@@ -15,7 +21,7 @@ _rate: dict[str, list[float]] = {}
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_app: FastAPI):
     yield
     get_engine_instance().close()
 
@@ -47,13 +53,13 @@ async def gateway_checks(request: Request, call_next):
     cl = request.headers.get("content-length")
     if cl and int(cl) > PAYLOAD_CAP_BYTES:
         return JSONResponse({"detail": "Payload too large"}, status_code=413)
-
     # 2. Token-Bucket Rate Limiter & Honeypot Sandbox (HackNusa Pilar 5)
     # Abaikan pembatasan untuk endpoint sistem dasar/health
     if request.url.path in ("/health", "/v1/health", "/docs", "/openapi.json"):
         return await call_next(request)
 
     limiter = get_rate_limiter()
+
     key = request.client.host if request.client else "unknown"
     res = limiter.acquire(key)
 
@@ -70,8 +76,6 @@ async def gateway_checks(request: Request, call_next):
 
     return await call_next(request)
 
-
-from fastapi.responses import JSONResponse, RedirectResponse
 
 @app.get("/", include_in_schema=False)
 def root():

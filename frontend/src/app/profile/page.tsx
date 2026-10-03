@@ -40,7 +40,7 @@ function ProfileWorkspace() {
   return (
     <div className="mx-auto max-w-2xl space-y-4">
       <div>
-        <h1 className="text-base font-semibold text-slate-900">Profil Saya</h1>
+        <h1 className="text-3xl font-extrabold text-slate-900">Profil saya</h1>
         <p className="text-xs text-slate-500">Informasi akun dan preferensi konseling Anda.</p>
       </div>
 
@@ -101,8 +101,7 @@ function ProfileWorkspace() {
               <ShieldCheck size={12} /> Privasi
             </p>
             <p className="mt-1 text-xs leading-relaxed text-slate-600">
-              Sesi chat Anda melewati SIAGA Guardrail dan hanya disimpan sebagai hash & vektor fitur
-              (Zero-Plaintext Retention). Data klinis dienkripsi di sisi server.
+              Percakapan mengikuti mode layanan yang aktif. Pada mode demo, akun tersimpan di browser dan sesi chat simulasi disimpan sementara di memori aplikasi.
             </p>
           </div>
         </div>
@@ -110,7 +109,7 @@ function ProfileWorkspace() {
 
       <Card>
         <h2 className="text-sm font-semibold text-slate-900">Sesi</h2>
-        <p className="mt-1 text-xs text-slate-500">Akun Anda aktif dan tersinkron dengan gateway SIAGA.</p>
+        <p className="mt-1 text-xs text-slate-500">Akunmu aktif. Periksa mode layanan sebelum memasukkan informasi sensitif.</p>
         <Button variant="danger" size="sm" className="mt-4" onClick={() => void logout()}>
           <LogOut size={13} /> Keluar dari Akun
         </Button>

@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/features/auth/auth-provider";
 import { ensureApiMode } from "@/lib/api";
+import { CrisisProvider } from "@/components/crisis/CrisisProvider";
 
 export function Providers({ children }: { children: ReactNode }) {
   const [client] = useState(
@@ -26,7 +27,7 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={client}>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider><CrisisProvider>{children}</CrisisProvider></AuthProvider>
     </QueryClientProvider>
   );
 }

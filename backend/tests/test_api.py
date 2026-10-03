@@ -10,9 +10,9 @@ os.environ["LOCAL_DB_PATH"] = str(_tmp / "local.db")
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from fastapi.testclient import TestClient  # noqa: E402
+from fastapi.testclient import TestClient
 
-from app.main import app  # noqa: E402
+from app.main import app
 
 client = TestClient(app)
 H_PATIENT = {"Authorization": "Bearer dev-patient-1"}

@@ -2,15 +2,14 @@
 
 import type { ReactNode } from "react";
 import { Button } from "./Button";
+import { BrandMark } from "@/components/brand/BrandMark";
 
 type Theme = "light" | "dark";
 
-export function FullScreenLoader({ label = "Memuat sesi SIAGA…" }: { label?: string }) {
+export function FullScreenLoader({ label = "Menyiapkan ruang HavenCare…" }: { label?: string }) {
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3 bg-care-bg">
-      <span className="font-mono text-lg tracking-widest text-slate-800">
-        SIAGA<span className="blink-cursor" />
-      </span>
+    <div className="hc-canvas flex min-h-dvh flex-col items-center justify-center gap-3">
+      <span className="hc-brand"><BrandMark /> HavenCare</span>
       <span role="status" className="text-xs text-slate-500">
         {label}
       </span>
@@ -31,7 +30,7 @@ export function EmptyState({
 }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-2 border border-dashed px-6 py-10 text-center ${
+      className={`flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed px-6 py-10 text-center ${
         theme === "dark" ? "border-soc-border text-soc-muted" : "border-slate-300 text-slate-500"
       }`}
     >

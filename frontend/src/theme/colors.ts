@@ -39,7 +39,7 @@ export const TEAM = {
 
 export const CARE = {
   /** Primary Care Blue — aksen antarmuka pasien */
-  primary: "#2563EB",
+  primary: "#1A7F8E",
   /** Background Light — tampilan antarmuka pasien */
-  bgLight: "#F8FAFC",
+  bgLight: "#F7FCFD",
 } as const;

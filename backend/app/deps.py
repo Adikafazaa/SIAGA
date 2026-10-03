@@ -18,7 +18,7 @@ try:
         from firebase_admin import auth as _fb_auth
 
         _firebase_auth = _fb_auth
-except Exception:
+except (ImportError, AttributeError):
     _firebase_auth = None
 
 
@@ -37,7 +37,7 @@ def get_current_user(authorization: str = Header(default="")) -> dict:
             uid = decoded.get("uid", "")
             email = decoded.get("email", "")
             display_name = decoded.get("name", "")
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001
             raise HTTPException(status.HTTP_401_UNAUTHORIZED, f"Invalid token: {exc}")
     elif token.count(".") == 2:
         # JWT format (e.g. Firebase ID token directly from client in local dev without service account JSON)
@@ -47,7 +47,7 @@ def get_current_user(authorization: str = Header(default="")) -> dict:
             uid = decoded.get("user_id") or decoded.get("sub") or decoded.get("uid") or "firebase-user"
             email = decoded.get("email", "")
             display_name = decoded.get("name", "")
-        except Exception:
+        except (ValueError, KeyError):
             uid = token
     elif token.startswith(("dev-", "dev.", "demo-", "demo.")):
         uid = token

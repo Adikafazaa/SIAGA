@@ -13,6 +13,7 @@ import { SCALES, answersSchema, severityOf, totalScore, type AnswersRecord } fro
 import { RESPONSE_OPTIONS, severityColor } from "@/lib/constants";
 import { listAssessments, saveAssessment } from "@/lib/api";
 import { formatDate, formatDateTime } from "@/lib/format";
+import { WellnessCheckin } from "@/components/wellness/WellnessCheckin";
 import type { Assessment, AssessmentType } from "@/lib/types";
 
 export default function AssessmentsPage() {
@@ -32,7 +33,7 @@ function AssessmentsWorkspace() {
 
   return (
     <div className="space-y-6">
-      {view.name === "list" && <ScaleList onStart={(type) => setView({ name: "form", type })} />}
+      {view.name === "list" && <><WellnessCheckin /><ScaleList onStart={(type) => setView({ name: "form", type })} /></>}
       {view.name === "form" && (
         <ScaleForm
           type={view.type}
@@ -52,7 +53,7 @@ function ScaleList({ onStart }: { onStart: (t: AssessmentType) => void }) {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-base font-semibold text-slate-900">Asesmen Klinis Mandiri</h1>
+        <h2 className="text-xl font-extrabold text-slate-900">Asesmen klinis lanjutan</h2>
         <p className="text-xs text-slate-500">
           Skrining terstandar untuk membantu Anda dan klinisi memahami kondisi saat ini.
         </p>

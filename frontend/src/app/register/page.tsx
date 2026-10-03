@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Loader2, ShieldCheck, Stethoscope, UserRound } from "lucide-react";
+import { Loader2, Stethoscope, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useAuth } from "@/features/auth/auth-provider";
 import type { Role } from "@/lib/types";
+import { AuthShell } from "@/components/auth/AuthShell";
 
 const schema = z.object({
   email: z.string().email("Format email tidak valid"),
@@ -47,17 +48,9 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-care-bg px-4 py-10">
-      <div className="mb-6 flex flex-col items-center gap-1.5">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-care-blue text-white">
-          <ShieldCheck size={22} />
-        </span>
-        <p className="font-mono text-lg font-semibold tracking-[0.25em] text-slate-900">SIAGA</p>
-        <p className="text-xs text-slate-500">Buat akun baru</p>
-      </div>
-
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-base font-semibold text-slate-900">Pendaftaran akun</h1>
+    <AuthShell register>
+      <div className="w-full max-w-md rounded-3xl border border-white/80 bg-white/80 p-6 shadow-[0_12px_32px_rgba(22,40,49,.08)]">
+        <h2 className="text-lg font-extrabold text-slate-900">Pendaftaran akun</h2>
         <p className="mb-5 mt-1 text-xs text-slate-500">
           Pilih peran Anda — alur onboarding akan menyesuaikan.
         </p>
@@ -117,6 +110,6 @@ export default function RegisterPage() {
           </Link>
         </p>
       </div>
-    </div>
+    </AuthShell>
   );
 }

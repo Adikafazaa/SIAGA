@@ -62,7 +62,10 @@ class TrajectoryGraph:
             sim = float(np.dot(vec, other.vec))
             if sim > SIM_THRESHOLD_TRAJECTORY:
                 candidate = Resurgence(other.turn, sim, other.risk, other.momentum)
-                if other.risk >= RESURGENCE_MIN_RISK and other.momentum >= RESURGENCE_MIN_MOMENTUM:
-                    if best is None or candidate.linked_momentum > best.linked_momentum:
-                        best = candidate
+                if (
+                    other.risk >= RESURGENCE_MIN_RISK
+                    and other.momentum >= RESURGENCE_MIN_MOMENTUM
+                    and (best is None or candidate.linked_momentum > best.linked_momentum)
+                ):
+                    best = candidate
         return best

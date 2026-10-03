@@ -17,6 +17,7 @@ import { Guard } from "@/features/auth/role-guard";
 import { useChat } from "@/features/chat/use-chat";
 import { formatRelative, formatTime } from "@/lib/format";
 import type { ChatMessage } from "@/lib/types";
+import { useCrisis } from "@/components/crisis/CrisisProvider";
 
 export default function ChatPage() {
   return (
@@ -31,16 +32,17 @@ export default function ChatPage() {
 function ChatWorkspace() {
   const chat = useChat();
   const [showSessions, setShowSessions] = useState(false);
+  const { openCrisis } = useCrisis();
 
   const blocked = chat.active?.status === "blocked";
 
   return (
-    <div className="flex h-[calc(100dvh-190px)] flex-col gap-4 lg:h-[calc(100dvh-120px)]">
+    <div className="flex h-[calc(100dvh-230px)] min-h-[360px] flex-col gap-4 lg:h-[calc(100dvh-140px)] lg:min-h-[540px]">
       {/* Header sesi */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h1 className="text-base font-semibold text-slate-900">
-            {chat.active ? chat.active.title : "Ruang Konseling"}
+          <h1 className="text-2xl font-extrabold text-slate-900">
+            HavenCare AI <span className="text-sm font-semibold text-[#5d7077]">· Ruang refleksi</span>
           </h1>
           <p className="text-[11px] text-slate-500">
             {chat.active
@@ -54,16 +56,16 @@ function ChatWorkspace() {
           )}
           <span className="flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-[10px] font-medium text-green-700">
             <ShieldCheck size={12} />
-            Dilindungi SIAGA
+            Ruang refleksi terlindungi
           </span>
         </div>
       </div>
 
       <div className="flex min-h-0 flex-1 gap-4">
         {/* Panel sesi — desktop */}
-        <aside className="hidden w-56 shrink-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm lg:flex">
+        <aside className="hc-glass hidden w-56 shrink-0 flex-col overflow-hidden rounded-3xl lg:flex">
           <div className="flex items-center justify-between border-b border-slate-100 px-3 py-2.5">
-            <span className="text-xs font-semibold text-slate-700">Sesi Anda</span>
+            <span className="text-xs font-extrabold text-slate-700">Riwayat refleksi</span>
             <button
               onClick={() => void chat.createNewSession()}
               className="flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-medium text-care-blue hover:bg-blue-50"
@@ -109,7 +111,7 @@ function ChatWorkspace() {
         </aside>
 
         {/* Kolom percakapan */}
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm">
+        <div className="hc-glass-strong flex min-w-0 flex-1 flex-col overflow-hidden rounded-3xl">
           {/* Toggle sesi (mobile) */}
           <div className="flex items-center justify-between border-b border-slate-200 bg-white px-3 py-2 lg:hidden">
             <button
@@ -153,8 +155,8 @@ function ChatWorkspace() {
               <Skeleton rows={3} theme="light" />
             ) : chat.messages.length === 0 ? (
               <EmptyState
-                title="Mulai percakapan Anda"
-                hint="Tulis apa pun yang sedang Anda rasakan. Respons dikirim langsung oleh Local AI — tidak ada skenario buatan."
+                title="Mulai percakapanmu"
+                hint="Ceritakan apa yang sedang kamu rasakan. HavenCare AI siap menemanimu berefleksi."
                 theme="light"
               />
             ) : (
@@ -170,8 +172,9 @@ function ChatWorkspace() {
           )}
 
           {/* Composer */}
-          <Composer key={chat.activeId ?? "none"} disabled={chat.streaming || !chat.activeId} blocked={blocked} onBlockedNew={() => void chat.createNewSession()} onSend={(t) => void chat.send(t)} />
+          <Composer key={chat.activeId ?? "none"} disabled={chat.streaming || !chat.activeId} blocked={blocked} onBlockedNew={() => void chat.createNewSession()} onSend={(t) => { if (/bunuh diri|menyakiti diri|melukai diri|ingin mati/i.test(t)) openCrisis(); void chat.send(t); }} />
         </div>
+        <aside className="hc-glass hidden w-[260px] shrink-0 flex-col gap-4 rounded-3xl p-5 2xl:flex"><div><p className="hc-label">Teman refleksi</p><h2 className="mt-2 text-lg font-extrabold">Ruangmu hari ini</h2><p className="hc-muted mt-2 text-sm leading-relaxed">Tuliskan apa yang paling terasa. Kamu dapat mengambil jeda kapan pun.</p></div><div className="rounded-2xl bg-[#eaf7f8] p-4"><span className="text-2xl">🌿</span><h3 className="mt-2 text-sm font-extrabold">Latihan singkat</h3><p className="hc-muted mt-1 text-xs leading-relaxed">Tarik napas perlahan, rasakan pijakan kakimu, lalu sebutkan satu hal yang kamu butuhkan sekarang.</p></div><button onClick={openCrisis} className="mt-auto rounded-2xl border border-[#e06d6d]/30 bg-[#e06d6d]/10 p-4 text-left text-xs font-extrabold text-[#c9575d]">Butuh bantuan segera? Buka pusat bantuan krisis →</button></aside>
       </div>
     </div>
   );
@@ -232,7 +235,7 @@ function MessageRow({ message, streaming }: { message: ChatMessage; streaming: b
     <div className="flex flex-col items-start">
       <div className="max-w-[85%] rounded-xl rounded-bl-sm border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm">
         <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
-          PsychoBot
+          HavenCare AI
         </p>
         {isDraftEmpty ? (
           <span className="flex items-center gap-1.5 text-xs text-slate-400" role="status">
@@ -296,7 +299,7 @@ function Composer({
             }
           }}
           rows={Math.min(4, Math.max(1, text.split("\n").length))}
-          placeholder="Tulis pesan Anda… (Enter untuk kirim, Shift+Enter baris baru)"
+          placeholder="Tulis apa yang kamu rasakan… (Enter untuk kirim)"
           className="min-h-[42px] max-h-32 flex-1 resize-none rounded-lg border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-care-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
         <Button onClick={submit} disabled={disabled || !text.trim()}>
@@ -305,8 +308,7 @@ function Composer({
         </Button>
       </div>
       <p className="mt-1.5 text-[10px] text-slate-400">
-        Setiap pesan diperiksa SIAGA Guardrail (L0–L3) sebelum mencapai model. Chatbot bukan pengganti
-        diagnosis medis.
+        HavenCare AI adalah teman refleksi, bukan pengganti diagnosis atau bantuan darurat.
       </p>
     </div>
   );

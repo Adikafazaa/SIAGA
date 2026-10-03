@@ -18,7 +18,6 @@ score() -> (provenance, intent), risk_position() -> r_N.
 from __future__ import annotations
 
 import hashlib
-import math
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -59,6 +58,9 @@ _INTENT_LEXICON: tuple[tuple[str, float], ...] = (
     (r"lewati[\w\s]{0,10}(verifikasi|otentikasi|auth)", 2.8),
     (r"tanpa[\w\s]{0,8}(syarat|izin|verifikasi)", 2.8),
     (r"(paksa|memaksa)[\w\s]{0,12}(buka|beri|bypass|jalankan)", 2.5),
+    # Generasi skrip berbahaya & eksploitasi (OWASP LLM02)
+    (r"(buatkan|tuliskan|generate|bikin|ciptakan)[\w\s]{0,14}(malware|exploit|keylogger|backdoor|trojan|ransomware|payload)", 3.5),
+    (r"(script|skrip|program|kode|fungsi)[\w\s]{0,14}(hack|bypass|scraping|scrape|dump|injeksi|sql[\w\s]{0,4}injection)", 3.0),
     # Rekonesansi format (langkah 2 Crescendo: pijakan format klinis -
     # PRD §3.1 Turn 2). Bobot rendah: pertanyaan format yang sah tetap wajar.
     (r"tadi\s+(anda\s+)?(menyebut|sebut|bilang|menjelaskan|jelaskan)", 0.7),
@@ -164,7 +166,7 @@ class L1Engine:
                 return None
             self._ort_session = ort.InferenceSession(str(model), providers=["CPUExecutionProvider"])
             return True
-        except Exception:
+        except (ImportError, RuntimeError, OSError, ValueError):
             return False
 
     def _embed(self, text: str) -> np.ndarray:
