@@ -15,8 +15,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const LIGHT: Record<Variant, string> = {
-  primary: "bg-care-blue text-white hover:bg-blue-700",
-  secondary: "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50",
+  primary: "bg-care-blue text-white hover:bg-[#0B5963]",
+  secondary: "border border-[#c8dfe2] bg-white/80 text-[#0B5963] hover:bg-white",
   danger: "border border-red-300 bg-white text-red-700 hover:bg-red-50",
   probe: "bg-probe text-white hover:bg-purple-700",
   solid: "bg-slate-900 text-white hover:bg-slate-800",
@@ -39,8 +39,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   const shape =
     theme === "dark"
       ? "rounded-none font-mono text-xs tracking-wider uppercase"
-      : "rounded-lg font-medium text-sm";
-  const sizing = size === "sm" ? "px-2.5 py-1" : "px-4 py-2";
+      : "rounded-full font-bold text-sm";
+  const sizing = size === "sm" ? "px-3 py-2" : "min-h-11 px-5 py-2.5";
   return (
     <button
       ref={ref}

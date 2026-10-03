@@ -1,473 +1,315 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  ArrowUp,
-  Check,
-  CheckCircle2,
-  CornerDownLeft,
-  MessageSquare,
+  Loader2,
   Plus,
-  Search,
-  Settings,
+  Send,
   ShieldCheck,
   ShieldX,
-  Smile,
-  Sparkles,
   Zap,
 } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
 import { DecisionBadge } from "@/components/ui/DecisionBadge";
-import { FreudFlowerLoader } from "@/components/ui/FreudFlowerLoader";
-import { InlineFreudScoreCard } from "@/components/chat/InlineFreudScoreCard";
+import { Button } from "@/components/ui/Button";
+import { EmptyState, ErrorState, Skeleton } from "@/components/ui/ScreenStates";
 import { Guard } from "@/features/auth/role-guard";
-import { useChatContext } from "@/features/chat/chat-context";
+import { useChat } from "@/features/chat/use-chat";
 import { formatRelative, formatTime } from "@/lib/format";
 import type { ChatMessage } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { useCrisis } from "@/components/crisis/CrisisProvider";
 
 export default function ChatPage() {
   return (
     <Guard roles={["patient"]}>
       <AppShell>
-        <ChatRealWorkspace />
+        <ChatWorkspace />
       </AppShell>
     </Guard>
   );
 }
 
-/**
- * ChatRealWorkspace — Antarmuka Chat Konseling 100% Data Real useChatContext
- *
- * Mengeliminasi seluruh data palsu/fiktif:
- * - Sidebar merender chat.sessions asli pengguna
- * - Tombol "+ Sesi Baru" memicu chat.createNewSession()
- * - Stream pesan merender chat.messages asli dan chat.streaming
- * - Composer memicu chat.send(text) saat Enter atau tombol kirim ditekan
- * - Styling 100% Freud Web UI (Orange #E87934, White Card, Sage #8DA85E)
- */
-function ChatRealWorkspace() {
-  const chat = useChatContext();
-  const [searchQuery, setSearchQuery] = useState("");
-  const endRef = useRef<HTMLDivElement>(null);
+function ChatWorkspace() {
+  const chat = useChat();
+  const [showSessions, setShowSessions] = useState(false);
+  const { openCrisis } = useCrisis();
 
-  // Filter sesi berdasarkan pencarian jika pengguna mengetik query
-  const filteredSessions = (chat.sessions ?? []).filter((s) =>
-    s.title ? s.title.toLowerCase().includes(searchQuery.toLowerCase()) : true
-  );
-
-  // Auto-scroll ke pesan terbawah saat ada pesan baru atau streaming aktif
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chat.messages, chat.streaming]);
-
-  const activeSessionTitle =
-    chat.active?.title ||
-    (chat.sessions.length > 0 ? chat.sessions[0].title : "Sesi Konseling AI");
+  const blocked = chat.active?.status === "blocked";
 
   return (
-    <div className="flex w-full h-screen overflow-hidden bg-[#FAF6EE] text-espresso select-none">
-      {/* ========================================================================= */}
-      {/* SIDEBAR DAFTAR SESI ASLI (w-[280px] sm:w-[300px] border-r border-[#DCD7CE]) */}
-      {/* ========================================================================= */}
-      <aside className="w-[280px] sm:w-[300px] shrink-0 border-r border-[#DCD7CE] bg-[#FAF6EE] flex flex-col h-screen overflow-hidden select-none">
-        {/* Header All AI Conversations + Ikon Chat */}
-        <div className="p-4 border-b border-[#DCD7CE]/60 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-orange" />
-            <h3 className="font-extrabold text-sm text-espresso tracking-tight">
-              All AI Conversations
-            </h3>
-          </div>
-          <div className="w-7 h-7 rounded-full bg-sand/30 flex items-center justify-center text-espresso/80">
-            <MessageSquare size={14} className="fill-espresso/80" />
-          </div>
+    <div className="flex h-[calc(100dvh-230px)] min-h-[360px] flex-col gap-4 lg:h-[calc(100dvh-140px)] lg:min-h-[540px]">
+      {/* Header sesi */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h1 className="text-2xl font-extrabold text-slate-900">
+            HavenCare AI <span className="text-sm font-semibold text-[#5d7077]">· Ruang refleksi</span>
+          </h1>
+          <p className="text-[11px] text-slate-500">
+            {chat.active
+              ? `${chat.active.turns} turn · aktif ${formatRelative(chat.active.lastActivityAt)}`
+              : "Memuat sesi…"}
+          </p>
         </div>
-
-        {/* Bilah Aksi Atas: Tombol "+ Sesi Baru" & Pencarian */}
-        <div className="p-3 border-b border-[#DCD7CE]/60 space-y-2.5 bg-cream/40">
-          {/* Tombol Fungsional + Sesi Baru */}
-          <button
-            type="button"
-            onClick={() => void chat.createNewSession()}
-            disabled={chat.streaming}
-            className={cn(
-              "w-full py-2.5 px-4 rounded-full bg-espresso text-cream",
-              "hover:bg-espresso-hover active:scale-95 transition-all text-xs font-bold",
-              "flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
-            )}
-          >
-            <Plus size={15} strokeWidth={2.5} />
-            <span>+ Sesi Baru</span>
-          </button>
-
-          {/* Kolom Pencarian Kapsul */}
-          <div className="relative">
-            <Search
-              size={14}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-warm-muted"
-            />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari sesi percakapan..."
-              className={cn(
-                "w-full rounded-full bg-white border border-[#DCD7CE] pl-8 pr-3 py-1.5",
-                "text-xs text-espresso placeholder:text-warm-muted/60 font-sans",
-                "focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange/30"
-              )}
-            />
-          </div>
-        </div>
-
-        {/* DAFTAR KARTU SESI ASLI DARI chat.sessions (Bukan Data Palsu) */}
-        <div className="flex-1 overflow-y-auto p-2.5 space-y-2">
-          {chat.sessionsLoading ? (
-            <div className="space-y-2.5 p-2">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="h-16 rounded-2xl bg-sand/30 animate-pulse"
-                />
-              ))}
-            </div>
-          ) : filteredSessions.length === 0 ? (
-            <div className="text-center py-12 px-4 space-y-2">
-              <div className="w-10 h-10 rounded-full bg-peach flex items-center justify-center mx-auto text-orange">
-                <MessageSquare size={18} />
-              </div>
-              <p className="text-xs font-bold text-espresso">Belum ada riwayat sesi</p>
-              <p className="text-[11px] text-warm-muted leading-relaxed">
-                Klik tombol <strong className="text-espresso">+ Sesi Baru</strong> untuk memulai konseling pertama Anda.
-              </p>
-            </div>
-          ) : (
-            filteredSessions.map((session) => {
-              const isActive = session.sessionId === chat.activeId;
-
-              return (
-                <button
-                  key={session.sessionId}
-                  type="button"
-                  onClick={() => chat.selectSession(session.sessionId)}
-                  className={cn(
-                    "w-full text-left p-3 rounded-2xl border transition-all duration-150",
-                    "flex items-start gap-2.5 active:scale-[0.99] group",
-                    isActive
-                      ? "bg-[#FCEBDD] border-[#E87934]/40 shadow-xs font-bold"
-                      : "bg-white/60 border-transparent hover:bg-white hover:border-[#DCD7CE]"
-                  )}
-                >
-                  {/* Avatar Ikon Bulat */}
-                  <div
-                    className={cn(
-                      "w-9 h-9 rounded-full flex items-center justify-center shrink-0 font-bold text-xs border shadow-2xs",
-                      isActive
-                        ? "bg-[#E87934] text-white border-[#E87934]"
-                        : "bg-[#EFECE6] text-espresso/70 border-[#DCD7CE]"
-                    )}
-                  >
-                    <MessageSquare size={16} />
-                  </div>
-
-                  {/* Konten Judul & Waktu Asli */}
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-1">
-                      <h4 className="text-xs font-bold text-espresso truncate">
-                        {session.title || "Konseling PsychoBot"}
-                      </h4>
-                      {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-orange shrink-0 ring-2 ring-orange/30" />
-                      )}
-                    </div>
-
-                    <div className="flex items-center justify-between gap-1 mt-1 text-[10px] text-warm-muted font-normal">
-                      <span>{session.turns} pesan</span>
-                      <span className="font-mono">
-                        {formatRelative(session.lastActivityAt)}
-                      </span>
-                    </div>
-                  </div>
-                </button>
-              );
-            })
+        <div className="flex items-center gap-2">
+          {chat.lastDecision && (
+            <DecisionBadge decision={chat.lastDecision} score={chat.lastRisk ?? undefined} theme="light" />
           )}
-        </div>
-
-        {/* Footer Status Keamanan SIAGA */}
-        <div className="p-3 border-t border-[#DCD7CE]/60 bg-cream/70 flex items-center justify-between text-[10px] text-warm-muted">
-          <span className="flex items-center gap-1 font-mono font-medium">
-            <Sparkles size={11} className="text-gold fill-gold" />
-            SIAGA Guardrail v2
-          </span>
-          <span className="text-sage font-bold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-sage" />
-            Aktif
+          <span className="flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-[10px] font-medium text-green-700">
+            <ShieldCheck size={12} />
+            Ruang refleksi terlindungi
           </span>
         </div>
-      </aside>
+      </div>
 
-      {/* ========================================================================= */}
-      {/* MAIN CHAT CANVAS (flex-1 bg-[#FAF9F5] Fluid Canvas)                      */}
-      {/* ========================================================================= */}
-      <main className="flex-1 flex flex-col justify-between h-screen min-w-0 overflow-hidden bg-[#FAF9F5]">
-        {/* HEADER ATAS CHAT: Doctor Freud.ai + Status + Action Buttons */}
-        <header className="h-16 border-b border-[#DCD7CE] bg-[#FAF9F5] px-6 flex items-center justify-between shrink-0 select-none">
-          <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-full bg-[#2C1D11] text-white flex items-center justify-center font-bold text-xs shadow-sm border border-sand/40">
-              DF
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#8DA85E] ring-2 ring-[#FAF9F5]" />
-            </div>
-
-            <div className="leading-tight">
-              <div className="flex items-center gap-1.5">
-                <h1 className="text-sm font-extrabold text-espresso">
-                  Doctor Freud.ai
-                </h1>
-                <span className="w-4 h-4 rounded-full bg-espresso text-white flex items-center justify-center text-[9px]">
-                  ✓
-                </span>
-              </div>
-              <p className="text-[11px] text-warm-muted font-sans mt-0.5 truncate">
-                Local AI • Protected by SIAGA L0–L3
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
+      <div className="flex min-h-0 flex-1 gap-4">
+        {/* Panel sesi — desktop */}
+        <aside className="hc-glass hidden w-56 shrink-0 flex-col overflow-hidden rounded-3xl lg:flex">
+          <div className="flex items-center justify-between border-b border-slate-100 px-3 py-2.5">
+            <span className="text-xs font-extrabold text-slate-700">Riwayat refleksi</span>
             <button
-              type="button"
-              title="Aksi AI Companion"
-              aria-label="Aksi AI"
-              className="w-9 h-9 rounded-full bg-sand/30 hover:bg-sand/60 text-espresso flex items-center justify-center transition-colors active:scale-95"
+              onClick={() => void chat.createNewSession()}
+              className="flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-medium text-care-blue hover:bg-blue-50"
             >
-              <FreudFlowerLoader size={20} />
-            </button>
-            <button
-              type="button"
-              title="Pengaturan Chat"
-              aria-label="Pengaturan"
-              className="w-9 h-9 rounded-full bg-sand/30 hover:bg-sand/60 text-espresso flex items-center justify-center transition-colors active:scale-95"
-            >
-              <Settings size={16} />
+              <Plus size={13} /> Baru
             </button>
           </div>
-        </header>
-
-        {/* AREA PESAN OBROLAN ASLI (Message Stream) */}
-        <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-10 py-6 space-y-5 select-text">
-          {chat.messagesLoading ? (
-            <div className="space-y-4 py-8">
-              <div className="h-16 rounded-2xl bg-sand/30 animate-pulse max-w-md ml-auto" />
-              <div className="h-28 rounded-2xl bg-sand/30 animate-pulse max-w-xl" />
-            </div>
-          ) : chat.messages.length === 0 ? (
-            /* Empty State Hangat jika Belum Ada Pesan di Sesi Ini */
-            <div className="py-16 flex flex-col items-center justify-center text-center px-4">
-              <div className="w-14 h-14 rounded-full bg-white border border-sand/80 flex items-center justify-center mb-3.5 shadow-sm">
-                <FreudFlowerLoader size={30} />
-              </div>
-              <h2 className="text-base sm:text-lg font-bold text-espresso">
-                Mulai Sesi Konseling Reflektif
-              </h2>
-              <p className="max-w-md text-xs text-warm-muted mt-1 leading-relaxed">
-                Ketik apa pun yang sedang Anda rasakan. Percakapan ini diproses secara aman oleh model AI lokal dengan privasi Zero-Plaintext.
-              </p>
-
-              {/* Pemicu Cepat Pertanyaan Awal */}
-              <div className="flex flex-wrap justify-center gap-2 mt-6 max-w-md">
-                {[
-                  "Saya merasa cemas dan gelisah hari ini",
-                  "Sulit tidur dan pikiran terus berputar",
-                  "Bagaimana cara menenangkan diri saat stres?",
-                ].map((starter, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => void chat.send(starter)}
-                    className="rounded-full bg-white border border-[#DCD7CE] px-3.5 py-1.5 text-xs text-espresso/80 hover:border-orange hover:bg-peach/30 transition-all active:scale-95 shadow-2xs"
-                  >
-                    💬 {starter}
-                  </button>
+          <div className="min-h-0 flex-1 overflow-y-auto p-2">
+            {chat.sessionsLoading ? (
+              <Skeleton rows={4} theme="light" />
+            ) : chat.sessions.length === 0 ? (
+              <p className="px-2 py-6 text-center text-xs text-slate-400">Belum ada sesi</p>
+            ) : (
+              <ul className="space-y-1">
+                {chat.sessions.map((s) => (
+                  <li key={s.sessionId}>
+                    <button
+                      onClick={() => chat.selectSession(s.sessionId)}
+                      className={`w-full rounded-lg px-2.5 py-2 text-left transition-colors ${
+                        s.sessionId === chat.activeId ? "bg-blue-50" : "hover:bg-slate-50"
+                      }`}
+                    >
+                      <p className="truncate text-xs font-medium text-slate-800">{s.title}</p>
+                      <p className="mt-0.5 flex items-center gap-1.5 text-[10px] text-slate-400">
+                        <span
+                          className={`inline-block h-1.5 w-1.5 rounded-full ${
+                            s.status === "blocked"
+                              ? "bg-red-500"
+                              : s.status === "flagged"
+                                ? "bg-purple-500"
+                                : "bg-green-500"
+                          }`}
+                          aria-hidden
+                        />
+                        {s.turns} turn · {formatRelative(s.lastActivityAt)}
+                      </p>
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
+            )}
+          </div>
+        </aside>
+
+        {/* Kolom percakapan */}
+        <div className="hc-glass-strong flex min-w-0 flex-1 flex-col overflow-hidden rounded-3xl">
+          {/* Toggle sesi (mobile) */}
+          <div className="flex items-center justify-between border-b border-slate-200 bg-white px-3 py-2 lg:hidden">
+            <button
+              onClick={() => setShowSessions((v) => !v)}
+              className="text-xs font-medium text-slate-600"
+            >
+              {showSessions ? "Tutup daftar sesi" : "Daftar sesi"}
+            </button>
+            <button
+              onClick={() => void chat.createNewSession()}
+              className="flex items-center gap-1 text-[11px] font-medium text-care-blue"
+            >
+              <Plus size={13} /> Sesi baru
+            </button>
+          </div>
+          {showSessions && (
+            <div className="max-h-40 overflow-y-auto border-b border-slate-200 bg-white p-2 lg:hidden">
+              <ul className="space-y-1">
+                {chat.sessions.map((s) => (
+                  <li key={s.sessionId}>
+                    <button
+                      onClick={() => {
+                        chat.selectSession(s.sessionId);
+                        setShowSessions(false);
+                      }}
+                      className={`w-full rounded-lg px-2.5 py-2 text-left text-xs ${
+                        s.sessionId === chat.activeId ? "bg-blue-50 font-medium text-care-blue" : "text-slate-700"
+                      }`}
+                    >
+                      {s.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ) : (
-            /* Stream Pesan Real Asli Pengguna & Bot */
-            chat.messages.map((m) => (
-              <RealMessageRow key={m.id} message={m} />
-            ))
           )}
 
-          {/* Indikator Berpikir AI Saat Streaming Respons */}
-          {chat.streaming && (
-            <div className="flex items-center gap-2 text-xs font-semibold text-warm-muted bg-sand/30 px-4 py-2 rounded-full w-fit animate-pulse select-none">
-              <FreudFlowerLoader size={15} />
-              <span>Dr. Freud is thinking...</span>
-              <Sparkles size={13} className="text-[#FFD147] fill-[#FFD147]" />
+          {/* Pesan */}
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+            {chat.messagesLoading ? (
+              <Skeleton rows={3} theme="light" />
+            ) : chat.messages.length === 0 ? (
+              <EmptyState
+                title="Mulai percakapanmu"
+                hint="Ceritakan apa yang sedang kamu rasakan. HavenCare AI siap menemanimu berefleksi."
+                theme="light"
+              />
+            ) : (
+              <MessageList messages={chat.messages} streaming={chat.streaming} />
+            )}
+          </div>
+
+          {/* Error */}
+          {chat.error && (
+            <div className="px-4 pb-2">
+              <ErrorState message={chat.error} theme="light" onRetry={chat.clearError} />
             </div>
           )}
 
-          <div ref={endRef} />
+          {/* Composer */}
+          <Composer key={chat.activeId ?? "none"} disabled={chat.streaming || !chat.activeId} blocked={blocked} onBlockedNew={() => void chat.createNewSession()} onSend={(t) => { if (/bunuh diri|menyakiti diri|melukai diri|ingin mati/i.test(t)) openCrisis(); void chat.send(t); }} />
         </div>
-
-        {/* BILAH INPUT PENGIRIM PESAN (Composer Bar Fungsional) */}
-        <div className="p-4 sm:p-6 pt-2 bg-gradient-to-t from-[#FAF9F5] via-[#FAF9F5]/90 to-transparent">
-          <RealComposerBar
-            disabled={chat.streaming || !chat.activeId}
-            onSend={(text) => void chat.send(text)}
-          />
-        </div>
-      </main>
+        <aside className="hc-glass hidden w-[260px] shrink-0 flex-col gap-4 rounded-3xl p-5 2xl:flex"><div><p className="hc-label">Teman refleksi</p><h2 className="mt-2 text-lg font-extrabold">Ruangmu hari ini</h2><p className="hc-muted mt-2 text-sm leading-relaxed">Tuliskan apa yang paling terasa. Kamu dapat mengambil jeda kapan pun.</p></div><div className="rounded-2xl bg-[#eaf7f8] p-4"><span className="text-2xl">🌿</span><h3 className="mt-2 text-sm font-extrabold">Latihan singkat</h3><p className="hc-muted mt-1 text-xs leading-relaxed">Tarik napas perlahan, rasakan pijakan kakimu, lalu sebutkan satu hal yang kamu butuhkan sekarang.</p></div><button onClick={openCrisis} className="mt-auto rounded-2xl border border-[#e06d6d]/30 bg-[#e06d6d]/10 p-4 text-left text-xs font-extrabold text-[#c9575d]">Butuh bantuan segera? Buka pusat bantuan krisis →</button></aside>
+      </div>
     </div>
   );
 }
 
-/**
- * RealMessageRow — Render Pesan Asli dengan Desain Khas Freud
- */
-function RealMessageRow({ message }: { message: ChatMessage }) {
-  // 1. Pesan Pengguna (Terracotta Orange #E87934 Rata Kanan)
+function MessageList({ messages, streaming }: { messages: ChatMessage[]; streaming: boolean }) {
+  const endRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages]);
+
+  return (
+    <div className="space-y-3">
+      {messages.map((m) => (
+        <MessageRow key={m.id} message={m} streaming={streaming} />
+      ))}
+      <div ref={endRef} />
+    </div>
+  );
+}
+
+function MessageRow({ message, streaming }: { message: ChatMessage; streaming: boolean }) {
   if (message.role === "user") {
     return (
       <div className="flex flex-col items-end">
-        <div className="max-w-xl rounded-[24px] rounded-br-[6px] bg-[#E87934] px-5 py-3.5 text-sm text-white shadow-sm font-sans leading-relaxed">
+        <div className="max-w-[85%] rounded-xl rounded-br-sm bg-care-blue px-3.5 py-2.5 text-sm text-white shadow-sm">
           <p className="whitespace-pre-wrap break-words">{message.content}</p>
         </div>
-        <span className="mt-1 text-[10px] text-warm-muted font-mono mr-1">
-          {formatTime(message.createdAt)}
-        </span>
+        <span className="mt-1 text-[10px] text-slate-400">{formatTime(message.createdAt)}</span>
       </div>
     );
   }
 
-  // 2. Pesan Sistem SIAGA Guardrail
   if (message.role === "system") {
     const isBlock = message.content.includes("BLOCK");
     const isProbe = message.content.includes("PROBE");
-
     return (
       <div
-        className={cn(
-          "mx-auto flex max-w-xl items-start gap-2.5 rounded-2xl border px-4 py-3 text-xs shadow-sm my-2",
+        className={`mx-auto flex max-w-[95%] items-start gap-2 border-l-4 px-3 py-2.5 text-xs ${
           isBlock
-            ? "border-block/40 bg-red-50 text-red-900"
+            ? "border-block bg-red-50 text-red-800"
             : isProbe
-            ? "border-probe/40 bg-purple-50 text-purple-900"
-            : "border-sand bg-white text-espresso/80"
-        )}
+              ? "border-probe bg-purple-50 text-purple-800"
+              : "border-slate-300 bg-slate-100 text-slate-600"
+        }`}
+        role={isBlock ? "alert" : "status"}
       >
         <span className="mt-0.5 shrink-0" aria-hidden>
-          {isBlock ? <ShieldX size={15} /> : <Zap size={15} />}
+          {isBlock ? <ShieldX size={14} /> : <Zap size={14} />}
         </span>
-        <p className="font-mono text-[11px] leading-relaxed">
-          {message.content}
-        </p>
+        <p className="font-mono text-[11px] leading-relaxed">{message.content}</p>
       </div>
     );
   }
 
-  // 3. Pesan Bot Doctor Freud.ai (Kartu Putih Lembut)
-  const containsScore =
-    message.content.toLowerCase().includes("freud score") ||
-    message.content.toLowerCase().includes("skor kesehatan");
-
+  const isDraftEmpty = streaming && message.content === "";
   return (
-    <div className="flex items-start gap-3 max-w-2xl">
-      {/* Avatar Bunga Freud di Sisi Kiri Balon */}
-      <div className="w-8 h-8 rounded-full bg-orange text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-orange/20">
-        <FreudFlowerLoader size={18} />
+    <div className="flex flex-col items-start">
+      <div className="max-w-[85%] rounded-xl rounded-bl-sm border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm">
+        <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
+          HavenCare AI
+        </p>
+        {isDraftEmpty ? (
+          <span className="flex items-center gap-1.5 text-xs text-slate-400" role="status">
+            <Loader2 size={12} className="animate-spin" />
+            Model lokal sedang merespons…
+          </span>
+        ) : (
+          <p className="whitespace-pre-wrap break-words">{message.content}</p>
+        )}
       </div>
-
-      <div className="flex-col items-start min-w-0 flex-1">
-        <div className="w-full rounded-[24px] rounded-tl-[6px] bg-white border border-[#DCD7CE]/70 p-5 sm:p-6 text-espresso text-sm shadow-[0_4px_20px_rgba(44,29,17,0.05)] space-y-3 font-sans">
-          <div className="flex items-center justify-between border-b border-sand/40 pb-2 text-xs">
-            <span className="font-bold text-espresso">Doctor Freud.ai</span>
-            <span className="text-[10px] font-semibold text-sage flex items-center gap-1">
-              <Check size={11} strokeWidth={3} /> Terverifikasi
-            </span>
-          </div>
-
-          <p className="whitespace-pre-wrap break-words leading-relaxed text-espresso">
-            {message.content}
-          </p>
-
-          {/* Jika respons bot membahas skor, sertakan kartu kurva inline */}
-          {containsScore && (
-            <InlineFreudScoreCard score={88.2} timeframe="1 month" />
-          )}
-        </div>
-
-        <span className="mt-1 text-[10px] text-warm-muted font-mono ml-2">
-          {formatTime(message.createdAt)}
-        </span>
-      </div>
+      <span className="mt-1 text-[10px] text-slate-400">{formatTime(message.createdAt)}</span>
     </div>
   );
 }
 
-/**
- * RealComposerBar — Bilah Input Mengambang Fungsional
- */
-function RealComposerBar({
+function Composer({
   disabled,
+  blocked,
+  onBlockedNew,
   onSend,
 }: {
   disabled: boolean;
+  blocked: boolean;
+  onBlockedNew: () => void;
   onSend: (text: string) => void;
 }) {
   const [text, setText] = useState("");
 
-  const handleSubmit = () => {
+  function submit() {
     if (!text.trim() || disabled) return;
-    onSend(text.trim());
+    onSend(text);
     setText("");
-  };
+  }
+
+  if (blocked) {
+    return (
+      <div className="border-t border-slate-200 bg-white px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="flex items-center gap-2 text-xs text-red-700">
+            <ShieldX size={14} />
+            Sesi ini dihentikan oleh SIAGA Guardrail demi keamanan data klinis.
+          </p>
+          <Button size="sm" onClick={onBlockedNew}>
+            <Plus size={13} /> Mulai Sesi Baru
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="rounded-full bg-white border border-[#DCD7CE] px-4 py-2 sm:py-2.5 shadow-[0_6px_25px_rgba(44,29,17,0.06)] flex items-center gap-3 max-w-2xl mx-auto w-full select-none">
-      {/* Ikon Emoji Senyum */}
-      <button
-        type="button"
-        onClick={() => setText((prev) => prev + " 😊")}
-        className="text-warm-muted hover:text-espresso transition-colors p-1"
-        aria-label="Pilih emoji"
-      >
-        <Smile size={20} />
-      </button>
-
-      {/* Input Teks Pesan Asli */}
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            handleSubmit();
-          }
-        }}
-        placeholder="Send your message to Dr. Freud AI..."
-        disabled={disabled}
-        className="flex-1 bg-transparent border-0 py-1.5 px-1 text-sm text-espresso placeholder:text-warm-muted/70 font-sans focus:outline-none focus:ring-0 disabled:opacity-50"
-      />
-
-      {/* Tombol Kirim Bulat Hijau Sage (#8DA85E) dengan Panah */}
-      <button
-        type="button"
-        onClick={handleSubmit}
-        disabled={disabled || !text.trim()}
-        title="Kirim Pesan"
-        aria-label="Kirim pesan"
-        className={cn(
-          "w-9 h-9 rounded-full bg-[#8DA85E] text-white flex items-center justify-center shrink-0 shadow-sm",
-          "hover:brightness-95 active:scale-95 transition-all",
-          "disabled:opacity-40 disabled:pointer-events-none"
-        )}
-      >
-        <CornerDownLeft size={16} strokeWidth={2.5} />
-      </button>
+    <div className="border-t border-slate-200 bg-white px-4 py-3">
+      <div className="flex items-end gap-2">
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          rows={Math.min(4, Math.max(1, text.split("\n").length))}
+          placeholder="Tulis apa yang kamu rasakan… (Enter untuk kirim)"
+          className="min-h-[42px] max-h-32 flex-1 resize-none rounded-lg border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-care-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
+        />
+        <Button onClick={submit} disabled={disabled || !text.trim()}>
+          <Send size={15} />
+          <span className="hidden sm:inline">Kirim</span>
+        </Button>
+      </div>
+      <p className="mt-1.5 text-[10px] text-slate-400">
+        HavenCare AI adalah teman refleksi, bukan pengganti diagnosis atau bantuan darurat.
+      </p>
     </div>
   );
 }

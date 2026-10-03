@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { DECISION, FREUD, SOC, TEAM } from "./src/theme/colors";
+import { CARE, DECISION, SOC, TEAM } from "./src/theme/colors";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
@@ -21,36 +21,12 @@ const config: Config = {
         redai: TEAM.redai,
         blueai: TEAM.blueai,
         nonnovel: TEAM.nonnovel,
-        // Palet Freud Web UI (Dribbble 23734329 & design_system.md §3)
-        espresso: FREUD.espresso,
-        "espresso-hover": FREUD.espressoHover,
-        cream: FREUD.cream,
-        orange: FREUD.orange,
-        sage: FREUD.sage,
-        gold: FREUD.gold,
-        peach: FREUD.peach,
-        "card-bg": FREUD.cardBg,
-        "border-freud": FREUD.border,
-        // Tints Sekunder
-        oatmeal: FREUD.oatmeal,
-        sand: FREUD.sand,
-        "warm-muted": FREUD.warmMuted,
-        lavender: FREUD.lavender,
-        coral: FREUD.coral,
-        "sky-dew": FREUD.skyDew,
-        // Freud Night Therapy Mode
-        "night-bg": FREUD.night.bg,
-        "night-card": FREUD.night.card,
-        "night-text": FREUD.night.text,
-        "night-muted": FREUD.night.muted,
-        "night-orange": FREUD.night.orange,
-        // Alias jembatan migrasi antarmuka pasien (mengarah ke Freud)
-        "care-blue": FREUD.espresso,
-        "care-bg": FREUD.cream,
+        // Antarmuka pasien (design_system.md)
+        "care-blue": CARE.primary,
+        "care-bg": CARE.bgLight,
       },
       fontFamily: {
-        sans: ["var(--font-urbanist)", "system-ui", "sans-serif"],
-        urbanist: ["var(--font-urbanist)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-montserrat)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },

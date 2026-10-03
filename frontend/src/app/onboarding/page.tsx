@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, ShieldCheck, Stethoscope, UserRound } from "lucide-react";
+import { Loader2, Stethoscope, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -10,6 +10,7 @@ import { useAuth } from "@/features/auth/auth-provider";
 import { RequireAuth } from "@/features/auth/role-guard";
 import { COUNSELING_PREFERENCES, ROLE_HOME, SPECIALIZATIONS, TIME_SLOTS } from "@/lib/constants";
 import type { Role } from "@/lib/types";
+import { BrandMark } from "@/components/brand/BrandMark";
 
 export default function OnboardingPage() {
   return (
@@ -42,15 +43,13 @@ function OnboardingFlow() {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-care-bg px-4 py-10">
+    <div className="hc-canvas flex min-h-dvh flex-col items-center justify-center px-4 py-10">
       <div className="mb-6 flex items-center gap-2">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-care-blue text-white">
-          <ShieldCheck size={18} />
-        </span>
-        <p className="font-mono text-sm font-semibold tracking-[0.25em] text-slate-900">SIAGA</p>
+        <BrandMark />
+        <p className="text-xl font-extrabold tracking-tight text-slate-900">HavenCare</p>
       </div>
 
-      <div className="w-full max-w-lg rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="hc-glass-strong w-full max-w-lg rounded-3xl p-6">
         {error && (
           <p role="alert" className="mb-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
             {error}
@@ -78,7 +77,7 @@ function RoleSelect({ busy, onSelect }: { busy: boolean; onSelect: (r: Role) => 
   return (
     <div>
       <h1 className="text-base font-semibold text-slate-900">Selamat datang 👋</h1>
-      <p className="mb-5 mt-1 text-xs text-slate-500">Pilih peran Anda di platform SIAGA.</p>
+      <p className="mb-5 mt-1 text-xs text-slate-500">Pilih peranmu di HavenCare.</p>
       <div className="space-y-2">
         {(
           [
@@ -164,8 +163,7 @@ function PatientForm({ busy, onSubmit }: { busy: boolean; onSubmit: (patch: Reco
             className="mt-0.5 h-4 w-4 rounded border-slate-300 text-care-blue focus:ring-care-blue"
           />
           <span>
-            Saya menyetujui pemrosesan data sesi oleh guardrail keamanan SIAGA untuk perlindungan data
-            klinis (Zero-Plaintext Retention).
+            Saya memahami bahwa data sesi diproses sesuai mode layanan yang aktif. Mode demo menggunakan data simulasi dan belum ditujukan untuk informasi klinis pribadi.
           </span>
         </label>
         <Button className="w-full" disabled={busy || !consent} onClick={() => onSubmit({ preferredSlot: slot, counselingPreferences: prefs })}>

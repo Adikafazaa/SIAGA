@@ -126,7 +126,7 @@ export const TIME_SLOTS = [
 // --- Navigasi -----------------------------------------------------------------
 
 export const ROLE_HOME: Record<string, string> = {
-  patient: "/chat",
+  patient: "/dashboard",
   doctor: "/doctor/dashboard",
   admin: "/admin/telemetry",
 };
