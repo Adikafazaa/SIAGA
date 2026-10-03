@@ -1,20 +1,20 @@
-# 🎓 BIMBINGAN & EVALUASI DOSEN PEMBIMBING
+# 🎓 ACADEMIC ADVISORY & FACULTY EVALUATION
 
-> **Direktori Materi & Dokumentasi Bimbingan Teknis SIAGA v2**  
+> **SIAGA v2 Technical Advisory Materials & Documentation Directory**  
 > **Platform:** PsychoBot Clinical Care & Stateful Intent-Aware Guardrail Architecture (SIAGA)
 
 ---
 
-## 📂 Daftar Berkas & Materi Bimbingan
+## 📂 Advisory Files & Reference Materials
 
-| Berkas | Tipe | Deskripsi & Tujuan |
+| File | Type | Description & Purpose |
 |---|---|---|
-| [**PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md**](PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md) | Dokumen Panduan | **Panduan Komprehensif Arsitektur SIAGA untuk Dosen:** Membahas latar belakang masalah, defense-in-depth L0–L3, Active Reverse Turing Probe, Local Sovereign AI, validasi medis, serta jawaban atas pertanyaan umum dosen penguji. |
-| **`DOKUM-15.9.2026.mp4`** | Rekaman Video | **Dokumentasi Sesi Bimbingan (15 September 2026):** Rekaman video sesi review arsitektur dan diskusi progres teknis bersama dosen pembimbing (~1.48 GB). |
+| [**PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md**](PENJELASAN_SISTEM_SIAGA_UNTUK_DOSEN.md) | Guidance Document | **Comprehensive SIAGA Architecture Guide for Faculty:** Details problem background, L0–L3 defense-in-depth, Active Reverse Turing Probe, Sovereign Local AI, clinical validation, and answers to common examination questions. |
+| **`DOKUM-15.9.2026.mp4`** | Video Recording | **Advisory Session Documentation (September 15, 2026):** Video recording of technical progress review and architecture defense with academic supervisor (~1.48 GB, stored locally). |
 
 ---
 
-## 📌 Topik Pembahasan Utama dalam Bimbingan:
-1. **Diferensiasi vs Guardrail Konvensional:** Mengapa filter regex / LlamaGuard stateless gagal mendeteksi *Crescendo Attack* bertahap dan mengapa SIAGA butuh formula akumulasi momentum multi-turn ($M_N$).
-2. **Mitigasi False-Positive:** Mengapa pasien depresi/histeris tidak boleh langsung diblokir (*Reverse Turing Probe level 1–3*).
-3. **Kepatuhan Regulasi:** Kedaulatan data pasien sesuai UU PDP No. 27/2022 via inferensi lokal on-premise (CUDA acceleration).
+## 📌 Key Discussion Topics in Academic Advisory:
+1. **Differentiation vs Conventional Guardrails:** Why stateless regex / LlamaGuard filters fail against staged *Crescendo Attacks*, and why SIAGA requires a multi-turn momentum accumulation formula ($M_N$).
+2. **False-Positive Mitigation:** Why emotionally distressed or depressed patients must not be blocked immediately (*Reverse Turing Probe Levels 1–3*).
+3. **Regulatory Compliance:** Patient data sovereignty compliant with Indonesia's Personal Data Protection Law (UU PDP No. 27/2022) via on-premise local inference (CUDA acceleration).

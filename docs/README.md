@@ -1,10 +1,10 @@
-# 📚 Dokumentasi SIAGA v2
+# 📚 SIAGA v2 Documentation
 
-Pusat dokumentasi resmi, spesifikasi teknis arsitektur, laporan pengujian, dan presentasi sistem SIAGA v2 tersimpan rapi di dalam direktori:
+The official documentation center, technical architectural specifications, benchmark test reports, and system presentations for SIAGA v2 are organized in the following directory:
 
 👉 [**`Knowledge/Docs/`**](../Knowledge/Docs/)
 
-### 🧭 Struktur Direktori Dokumentasi:
-* [**`Knowledge/Docs/spec/`**](../Knowledge/Docs/spec/): Spesifikasi Teknis & Arsitektur Formal (Markdown, PDF, Word, Google Docs)
-* [**`Knowledge/Docs/report/`**](../Knowledge/Docs/report/): Laporan Benchmark Model SLM, Evaluasi Qwen Series, & Hasil Uji E2E Headless
-* [**`Knowledge/Docs/html/`**](../Knowledge/Docs/html/): Dashboard Presentasi Visual Interaktif
+### 🧭 Documentation Directory Structure:
+* [**`Knowledge/Docs/spec/`**](../Knowledge/Docs/spec/): Formal Technical Specifications & Architecture (Markdown, PDF, Word, Google Docs)
+* [**`Knowledge/Docs/report/`**](../Knowledge/Docs/report/): SLM Model Benchmark Reports, Qwen Series Evaluation, & Headless E2E Test Results
+* [**`Knowledge/Docs/html/`**](../Knowledge/Docs/html/): Interactive Visual Presentation Dashboards

@@ -1,107 +1,104 @@
 # SIAGA-v2 Backend — PsychoBot Clinical Care & SIAGA Guardrail Platform
 
-Backend FastAPI untuk platform konseling digital dengan guardrail SIAGA stateful
-(L0 UTS #39 → L1 ONNX dual-axis → L3 CIM) di depan Local AI LLM.
-Spesifikasi acuan: `../Modules/*.md`.
+FastAPI backend powering the digital clinical counseling platform protected by the stateful SIAGA guardrail architecture (L0 UTS #39 → L1 Dual-Axis ONNX → L2 Context Adapter → L3 CIM Engine) in front of an on-premise Local AI LLM.
 
-## Menjalankan
+## Running the Backend
 
 ```bash
-cd SIAGA-v2/backend
+cd backend
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt      # Linux: .venv/bin/pip
-copy .env.example .env                              # sesuaikan LLM_BASE_URL, dst.
+copy .env.example .env                              # Adjust LLM_BASE_URL, etc.
 .venv\Scripts\uvicorn app.main:app --port 8000 --reload
 ```
 
-- Docs interaktif: http://localhost:8000/docs
-- Health: `GET /health`
-- Test: `.venv\Scripts\python -m pytest tests -q`
+- Interactive OpenAPI/Swagger Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+- Health Check: `GET /health`
+- Automated Tests: `.venv\Scripts\python -m pytest tests -q`
 
-## Mode Operasi
+## Operating Modes
 
-| Kondisi | Perilaku |
+| Condition | Behavior |
 |---|---|
-| `LLM_PROVIDER=ollama` / `openai_compatible` + server hidup | Chat mengalir ke Local LLM (streaming SSE didukung) |
-| Server LLM mati | Fallback persona klinis PsychoBot (aplikasi tetap jalan) |
-| `FIREBASE_CREDENTIALS_PATH` diset + firebase-admin terpasang | Firestore + verifikasi Firebase ID token |
-| Tanpa kredensial Firebase (default dev) | SQLite lokal (`data/psycho_local.db`) + token dev |
+| `LLM_PROVIDER=ollama` / `openai_compatible` + server active | Chat flows directly to Local LLM (Server-Sent Events / SSE streaming supported) |
+| Local LLM server offline | Automatic fallback to empathetic clinical PsychoBot persona (zero-downtime) |
+| `FIREBASE_CREDENTIALS_PATH` set + `firebase-admin` installed | Cloud Firestore + Firebase ID token verification |
+| Without Firebase credentials (default dev mode) | Local SQLite store (`data/psycho_local.db`) + dev bearer tokens |
 
-**Token dev (hanya saat Firebase belum dikonfigurasi):**
-`Authorization: Bearer dev-<uid>` — mis. `Bearer dev-patient-1`.
-Role diambil dari dokumen user; provisioning admin/doctor lewat
-`POST /v1/users/onboarding` (doctor wajib No. SIP 8 digit) atau set manual di store.
+**Development Bearer Tokens (Active when Firebase is not configured):**
+`Authorization: Bearer dev-<uid>` — e.g. `Bearer dev-patient-1`.
+User roles are extracted from user profiles; doctor provisioning requires an 8-digit medical license number (SIP) via `POST /v1/users/onboarding`.
 
-## Kontrak API (ringkas untuk frontend)
+## API Contracts (Frontend Summary)
 
-Semua endpoint (kecuali `/health`) wajib header `Authorization: Bearer <token>`.
+All endpoints (except `/health`) require the `Authorization: Bearer <token>` header.
 
 ### Chat (`/v1/chat`)
-| Endpoint | Fungsi |
+| Endpoint | Functionality |
 |---|---|
-| `POST /message` | Kirim pesan → guardrail L0–L3 → (ALLOW/WATCH) diteruskan ke Local LLM. Balasan non-stream. |
-| `POST /stream` | Sama, streaming **SSE**: `event: guardrail` (decision+risk) → `event: token` (potongan balasan) → `event: done`. |
-| `POST /probe/verify` | Verifikasi jawaban Reverse Turing Probe `{session_id, reply}`. |
-| `GET /sessions` / `POST /sessions` | Daftar / buat sesi chat. |
-| `GET /sessions/{id}/messages` | Riwayat percakapan sesi. |
-| `GET /sessions/{id}/metrics` | Metrik CIM sesi (kurva momentum, keputusan per turn) — feed Live Guard Monitor. |
+| `POST /message` | Sends user message → L0–L3 guardrail evaluation → forwarded to Local LLM (if ALLOW/WATCH). Returns synchronous JSON reply. |
+| `POST /stream` | Streaming endpoint via **Server-Sent Events (SSE)**: `event: guardrail` (decision + risk metrics) → `event: token` (streamed text tokens) → `event: done`. |
+| `POST /probe/verify` | Verifies the response to an active Reverse Turing Probe `{session_id, reply}`. |
+| `GET /sessions` / `POST /sessions` | List or create chat counseling sessions. |
+| `GET /sessions/{id}/messages` | Retrieve conversation turn history for a session. |
+| `GET /sessions/{id}/metrics` | Returns stateful CIM metrics (momentum curve, turn-by-turn decisions) for the Live Guard Monitor. |
 
-Respons `POST /message` (sesuai `Modules/api.md`):
+Sample Response for `POST /message`:
 
 ```json
 {
   "session_id": "sess_99812",
-  "status": "ALLOWED",            // ALLOWED | BLOCKED
+  "status": "ALLOWED",            // ALLOWED | BLOCKED | REFUSED
   "decision": "ALLOW",            // ALLOW | WATCH | PROBE | BLOCK
   "reply": "...",
   "risk_score": 0.08,
   "reason": null,
   "stateful_metrics": { "momentum": 0.08, "direction_consistency": 0.25, "anchor_score": 0.0, "turns_to_detection": null },
   "latency_ms": { "l0": 0.8, "l1": 12.5, "l2": 0.3, "cim": 8.9, "total": 22.2 },
-  "explanation": [ { "turn": 1, "reason": "sinyal di bawah ambang; ALLOW" } ]
+  "explanation": [ { "turn": 1, "reason": "Signal below threshold; ALLOW" } ]
 }
 ```
 
-`decision=PROBE` → `reply` berisi tantangan (mis. verifikasi SIP DPJP); kirim jawaban
-user ke `POST /probe/verify`. `decision=BLOCK` → sesi terkunci, `reply` pesan aman.
+- When `decision=PROBE`, `reply` contains a challenge (e.g. DPJP physician verification); submit user response to `POST /probe/verify`.
+- When `decision=BLOCK`, the session is locked and `reply` provides a safe crisis de-escalation message.
 
 ### Users (`/v1/users`)
-- `GET /me` — profil user aktif.
-- `POST /onboarding` — `{role: "patient"|"doctor", displayName?, doctorLicenseId?, preferences?}`; doctor wajib SIP 8 digit.
+- `GET /me`: Returns profile of the authenticated user.
+- `POST /onboarding`: `{role: "patient"|"doctor", displayName?, doctorLicenseId?, preferences?}`; doctors require an 8-digit SIP.
 
 ### Assessments (`/v1/assessments`)
-- `GET /instruments` — soal PHQ-9 (9 item) & GAD-7 (7 item) + opsi 0–3.
-- `POST /` — `{type: "PHQ-9"|"GAD-7", answers: number[]}` → skor, severity, flag `requiresClinicalAttention`.
-- `GET /` — riwayat asesmen.
+- `GET /instruments`: Returns standardized screening question sets for PHQ-9 (9 items) & GAD-7 (7 items) with 0–3 scoring scales.
+- `POST /`: Submits assessment `{type: "PHQ-9"|"GAD-7", answers: number[]}` → returns severity score and clinical attention flags.
+- `GET /`: Returns assessment history.
 
-### Doctor DPJP (`/v1/doctor`, role doctor/admin)
-- `GET /patients` — daftar pasien + asesmen terakhir.
-- `GET /patients/{uid}` — profil, asesmen, rekam medis, sesi chat.
-- `POST /records` — `{patientUid, notes}` tambah catatan klinis.
+### Psychiatrist Portal / DPJP (`/v1/doctor`, Role: `doctor` or `admin`)
+- `GET /patients`: Patient list with latest assessment summaries.
+- `GET /patients/{uid}`: Detailed clinical profile, assessments, records, and session histories.
+- `POST /records`: `{patientUid, notes}` adds an encrypted clinical record.
 
-### Admin SOC (`/v1/admin`, role admin/doctor)
-- `GET /telemetry` — ringkasan: distribusi keputusan, block rate, latensi p50/p95, log terbaru.
-- `GET /security-logs?limit=` — log insiden ( koleksi `securityLogs` ).
-- `GET /llm-status` — ketersediaan Local AI + latensi.
+### SOC Admin Telemetry (`/v1/admin`, Role: `admin` or `doctor`)
+- `GET /telemetry`: SOC summary: decision distribution, block rates, p50/p95 latency metrics, and recent events.
+- `GET /security-logs?limit=`: Detailed forensic audit logs for security events.
+- `GET /llm-status`: Local AI health check and latency status.
 
-## Privasi (Zero-Plaintext Retention)
-Session store guardrail (DuckDB, `data/siaga_sessions.duckdb`) **hanya** menyimpan
-SHA-256 hash pesan + embedding + fitur risiko, TTL 24 jam. Teks percakapan user
-tersimpan terpisah di Firestore/SQLite untuk riwayat chat aplikasi.
+## Privacy (Zero-Plaintext Session Retention)
 
-## Struktur
+The guardrail state store (DuckDB, `data/siaga_sessions.duckdb`) **strictly** stores message SHA-256 hashes, compressed embeddings, and risk trajectory states with a 24-hour TTL expiration. Raw user conversation text is never persisted in the guardrail store.
+
+## Architecture & Code Structure
 
 ```
 backend/app/
-├── main.py            # FastAPI: CORS, rate limit, payload cap, router
-├── config.py          # Semua konfigurasi via .env (wajib per development_rules.md)
-├── schemas.py         # Kontrak Pydantic
-├── engine.py          # Orkestrator guardrail L0–L3 → fusi → keputusan
-├── db.py              # Repository: Firestore (produksi) / SQLite (fallback)
-├── deps.py            # Auth: Firebase ID token / dev token
-├── llm_client.py      # Streaming Ollama & OpenAI-compatible + fallback persona
-├── core/              # L0 canonicalize, L1 dual-axis (ONNX/fallback), L2 konteks,
-│   └── l3_cim/        # ★ CIM: momentum, anchor, trajectory graph, session store
-├── probe/             # Reverse Turing Protocol + clinical canary
+├── main.py            # FastAPI entrypoint: CORS, token bucket rate limiter, payload cap, routers
+├── config.py          # Central Pydantic settings & .env configuration
+├── schemas.py         # Pydantic data contracts
+├── engine.py          # Guardrail orchestrator (L0–L3) & multi-signal decision fusion
+├── db.py              # Data repository: Cloud Firestore (production) / SQLite (development)
+├── deps.py            # Authentication dependencies: Firebase ID tokens / dev tokens
+├── llm_client.py      # Streaming Local AI client (Ollama / SGLang / OpenAI-compatible)
+├── adapters/          # HL7 FHIR Interoperability adapters
+├── core/              # L0 canonicalization, L1 dual-axis ONNX classifiers, L2 context adapter
+│   └── l3_cim/        # ★ CIM Engine: momentum formula, vector trajectory, session store
+├── probe/             # Reverse Turing Protocol & clinical canary evaluation
 └── routers/           # chat, users, assessments, doctor, admin
 ```

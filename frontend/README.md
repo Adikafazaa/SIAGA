@@ -1,30 +1,30 @@
 # HavenCare Frontend
 
-Implementasi tujuh layar dari `havencare_blueprint_canvas.html` sebagai aplikasi Next.js 14, React 18, TypeScript, dan Tailwind CSS. Struktur `src/app`, `src/components`, `src/features`, `src/lib`, serta mekanisme autentikasi dan API mengikuti proyek `frontend` acuan.
+Implementation of the clinical and wellbeing interface based on `havencare_blueprint_canvas.html`, built with Next.js 14 (App Router), React 18, TypeScript, and Tailwind CSS. The folder structure (`src/app`, `src/components`, `src/features`, `src/lib`), authentication flow, and API proxy mechanisms adhere to the core platform architecture.
 
-## Jalankan
+## Getting Started
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Buka `http://localhost:3000`. Untuk memeriksa build produksi, jalankan `npm run build`.
+Open [http://localhost:3000](http://localhost:3000). To test the production build, execute `npm run build`.
 
-## Layar
+## Key Screens & Routes
 
-| Rancangan | Rute | Fungsi |
+| Design View | Route | Description & Features |
 | --- | --- | --- |
-| Landing publik | `/` | Pilih suasana hati, akses masuk/daftar, dan bantuan |
-| Autentikasi | `/login`, `/register` | Akun email, Google jika dikonfigurasi, dan akun demo |
-| Wellness hub | `/dashboard` | Check-in suasana hati dan navigasi pasien |
-| Chat refleksi | `/chat` | Sesi chat melalui API atau mode demo yang sudah ada |
-| Asesmen | `/assessments` | Check-in tiga langkah serta PHQ-9/GAD-7 dari proyek acuan |
-| Komunitas | `/community` | Contoh linimasa dan posting lokal di perangkat |
-| Bantuan krisis | Tombol SOS pada halaman | Kontak bantuan dan IGD terdekat |
+| Public Landing | `/` | Mood exploration, login/register access points, and crisis hotline resources |
+| Authentication | `/login`, `/register` | Email/password login, Google Auth (if configured), and pre-seeded 1-click demo accounts |
+| Wellness Hub | `/dashboard` | Daily emotional check-in, mood history trends, and patient journey navigation |
+| Reflection Chat | `/chat` | Real-time empathetic AI counseling sessions with SSE token streaming and live guardrail feedback |
+| Clinical Assessments | `/assessments` | Standardized clinical screening instruments (PHQ-9 for Depression & GAD-7 for Anxiety) |
+| Community Support | `/community` | Local peer support timeline and client-side self-expression posts |
+| Crisis Support | SOS Floating Action | Immediate emergency hotlines and nearby psychiatric emergency facilities (IGD) |
 
-Rute dokter, admin, onboarding, dan profil dari proyek acuan tetap tersedia. Pasien diarahkan ke `/dashboard` setelah masuk.
+*Doctor DPJP, SOC Admin Telemetry, Onboarding, and Profile routes are fully available. Users are redirected to `/dashboard` upon patient sign-in.*
 
-## Batas versi demo
+## Demo Mode Limitations
 
-Tanpa konfigurasi backend, aplikasi memakai mode demo dari proyek acuan. Postingan komunitas dan check-in disimpan di browser saja; postingan tidak dibagikan ke akun lain dan tidak dimoderasi server. Percakapan demo memakai data simulasi dalam memori aplikasi. HavenCare AI bukan layanan gawat darurat atau pengganti diagnosis.
+When running without a live backend instance, the frontend seamlessly operates in client-side mock mode. Community posts and wellness check-ins are persisted locally in browser storage. Simulated chat interactions utilize in-memory mock responses. HavenCare AI is an assistive support platform and not an emergency service or substitute for professional psychiatric diagnosis.
